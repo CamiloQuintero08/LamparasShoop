@@ -9,7 +9,7 @@ const productos = [
             nombre: "Lámparas",
             id: "lamparas"
         },
-        precio: 65000,       
+        precio: 6500,       
     },
     { 
         id: "lampara2",
@@ -188,9 +188,18 @@ function actualizarBotonesAgregar() {
 
 }
 
-const productosEnCarrito = [];
+let productosEnCarrito;
 
-function agregarAlCarrito() {
+let productosEnCarritoLS = localStorage.getItem("productos-en-carrito");
+
+if (productosEnCarritoLS) {
+    productosEnCarrito = JSON.parse(productosEnCarritoLS); 
+    actualizarNumerito();
+} else {
+    productosEnCarrito = [];
+}
+
+function agregarAlCarrito(e) {
   
     const idBoton = e.currentTarget.id;
     const productosAgregado = productos.find(producto => producto.id === idBoton);
@@ -205,6 +214,8 @@ function agregarAlCarrito() {
     } 
     
     actualizarNumerito();
+
+    localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
 }
 
 function actualizarNumerito() {
