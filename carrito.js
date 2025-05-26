@@ -97,16 +97,16 @@ function actualizarTotal() {
 }
 
 function comprar() {
-    let textoProductos = ""
-    const numeroTelefono = ""  // Actualizar a numero nose xd
+    let textoProductos = "\n\n"
+    const numeroTelefono = "3173392859"  // Actualizar a numero nose xd
 
     for (let i = 0; i < productosEnCarrito.length; i++) {
-        textoProductos += `${productosEnCarrito[i].titulo} cantidad: ${productosEnCarrito[i].cantidad}, `
+        textoProductos += `${productosEnCarrito[i].titulo} cantidad: ${productosEnCarrito[i].cantidad}\n`
     }
 
-    let texto = `Hola 👋, me gustaría comprar los siguientes productos: ${textoProductos} 📍Estoy interesado/a en recibir más información y concretar la compra. Gracias.`
+    let texto = `Hola 👋, me gustaría comprar los siguientes productos: ${textoProductos}\n📍Estoy interesado/a en recibir más información y concretar la compra. Gracias.`
 
-    window.location.href = `https://api.whatsapp.com/send/?phone=${numeroTelefono}&text=${texto}&type=phone_number&app_absent=0`
+    window.location.href = `https://api.whatsapp.com/send/?phone=${numeroTelefono}&text=${encodeURI(texto)}&type=phone_number&app_absent=0`
 }
 
 botonComprar.addEventListener("click", comprar);
