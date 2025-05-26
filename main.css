@@ -151,7 +151,16 @@ main {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
+    
 
+}
+
+.producto {
+    transition: all .2s;
+}
+
+.producto:hover {
+    transform: scale(1.02);
 }
 
 .producto-imagen {

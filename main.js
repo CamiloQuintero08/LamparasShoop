@@ -23,7 +23,7 @@ const productos = [
     },
     { 
         id: "lampara3",
-        titulo: "Maceta",
+        titulo: "Lámpara3",
         imagen: "./img/lamparas/03.jpg",
         categoria: {
             nombre: "Lámparas",
