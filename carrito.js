@@ -7,6 +7,7 @@ const contenedorCarritoAcciones = document.querySelector("#carrito-acciones");
 const contenedorCarritoComprado = document.querySelector("#carrito-comprado");
 let botonesEliminar = document.querySelectorAll(".carrito-producto-eliminar");
 const botonVaciar = document.querySelector("#carrito-acciones-vaciar");
+const botonComprar = document.querySelector("#carrito-acciones-comprar");
 const contenedorTotal = document.querySelector("#total");
 
 
@@ -94,3 +95,18 @@ function actualizarTotal() {
     const totalCalculado = productosEnCarrito.reduce((acc, producto) => acc + (producto.precio * producto.cantidad), 0);
     total.innerText = `$${totalCalculado}`;
 }
+
+function comprar() {
+    let textoProductos = ""
+    const numeroTelefono = ""  // Actualizar a numero nose xd
+
+    for (let i = 0; i < productosEnCarrito.length; i++) {
+        textoProductos += `${productosEnCarrito[i].titulo} cantidad: ${productosEnCarrito[i].cantidad}, `
+    }
+
+    let texto = `Hola 👋, me gustaría comprar los siguientes productos: ${textoProductos} 📍Estoy interesado/a en recibir más información y concretar la compra. Gracias.`
+
+    window.location.href = `https://api.whatsapp.com/send/?phone=${numeroTelefono}&text=${texto}&type=phone_number&app_absent=0`
+}
+
+botonComprar.addEventListener("click", comprar);
