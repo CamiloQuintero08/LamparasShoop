@@ -1,12 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
 
 :root {
-    --primary-color: #80ac75;
-    /*opciones color principal: #80ac75;*/
-    --primary-color-dark: #083a08;
-    --secondary-color: #f7f7f7;
-    --background-color: #ffffff;
-    --text-color: #5f1169;
+    --primary-color: #fac28d;
+    /*opciones color principal: #80ac75; 173638; fac28d;*/
+    --primary-color-dark: #ff6600;
+    /*opciones color texto: #51b3ae; df6c00;*/
+    --secondary-color: #2e0f00;
+    --background-color: #000000;
+    --text-color: #ffd903;
 }
 
 *{
@@ -50,9 +51,26 @@ aside {
 
 .logo {
     font-weight: 700;
-    font-size: 1.8rem;
-    color: var(--primary-color-dark);
+    font-size: 1.5rem;
+    color: var(--text-color);
+    animation: animartitulo 4s infinite ease-in-out;
 }
+
+@keyframes animartitulo {
+    0% {
+        transform: translateY(0);
+        color: #000;
+    }
+    50% {
+        transform: translateY(-10px);
+        color: #df6400;
+    }
+    100% {
+        transform: translateY(0);
+        color: #000;
+    }
+}
+
 
 .menu {
     display: flex;
@@ -143,7 +161,7 @@ main {
 }
 
 .titulo-principal {
-    color: var(--primary-color);
+    color: var(--primary-color-dark);
     margin-bottom: 2rem;
 }
 
@@ -151,8 +169,6 @@ main {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
-    
-
 }
 
 .producto {
