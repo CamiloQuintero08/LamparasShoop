@@ -1,12 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
 
 :root {
-    --primary-color: #fac28d;
+    --primary-color: #75ac92;
     /*opciones color principal: #80ac75; 173638; fac28d;*/
-    --primary-color-dark: #ff6600;
-    /*opciones color texto: #51b3ae; df6c00;*/
-    --secondary-color: #2e0f00;
-    --background-color: #000000;
+    --primary-color-dark: #111242;
+    /*opciones color texto: #51b3ae; df6c00; 0d5507*/
+    --secondary-color: #b8ece1;
+    /*opciones color secundario: c8f3ca; */
+    --background-color: #ffffff;
     --text-color: #ffd903;
 }
 
@@ -63,7 +64,7 @@ aside {
     }
     50% {
         transform: translateY(-10px);
-        color: #df6400;
+        color: #111242;
     }
     100% {
         transform: translateY(0);
@@ -128,6 +129,13 @@ aside {
 .bi-hand-index-thumb-fill,
 .bi-hand-index-thumb {
     transform: rotateZ(90deg);
+}
+
+.boton-informacion {
+    position: absolute;
+    bottom: 9rem;
+    left: 1.5rem;
+    color: var(--primary-color-dark);   
 }
 
 .boton-carrito {

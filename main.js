@@ -123,6 +123,7 @@ const productos = [
         },
         precio: 3500,       
     },
+    
 
 ]
 
