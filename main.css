@@ -18,6 +18,10 @@
     font-family: 'Rubik', sans-serif;
 }
 
+body {
+    position: relative;
+}
+
 h1, h2, h3, h4, h5, h6, p, a, input, textarea,ul {
     margin: 0;
     padding: 0;
@@ -131,12 +135,6 @@ aside {
     transform: rotateZ(90deg);
 }
 
-.boton-informacion {
-    position: absolute;
-    bottom: 9rem;
-    left: 1.5rem;
-    color: var(--primary-color-dark);   
-}
 
 .boton-carrito {
     margin-top: 2rem;
@@ -187,11 +185,6 @@ main {
     transform: scale(1.02);
 }
 
-.producto-imagen {
-    max-width: 100%;
-    border-radius: 1rem;
-}
-
 .producto-detalles {
     background-color: var(--primary-color);
     color: var(--background-color);
@@ -225,6 +218,101 @@ main {
     color: var(--background-color);
 }
 
+.producto-imagen {
+    max-width: 100%;
+    border-radius: 1rem;
+    height: 100%;
+}
+
+.contenedor-imagen {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 250px;
+    border-radius: 1rem;
+}
+
+.contenedor-imagen img {
+    position: absolute;
+    width: auto;
+    height: auto;
+    object-fit: cover;
+    opacity: 0;
+    animation: sliderAnim 9s infinite;
+}
+
+.contenedor-imagen img {
+    position: absolute;
+    width: auto;
+    height: auto;
+    object-fit: cover;
+    opacity: 0;
+    animation: sliderAnim 9s infinite;
+    transition: opacity 0.5s;
+}
+
+.contenedor-imagen img:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.contenedor-imagen img:nth-child(2) {
+    animation-delay: 3s;
+}
+
+.contenedor-imagen img:nth-child(3) {
+    animation-delay: 6s;
+}
+
+@keyframes sliderAnim {
+    0% { opacity: 0; }
+    5% { opacity: 1; }
+    30% { opacity: 1; }
+    35% { opacity: 0; }
+    100% { opacity: 0; }
+}
+
+.boton-info {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    border-radius: 100%;
+    cursor: pointer;
+    
+}
+
+.boton-info:hover{
+    scale: 1.2;
+}
+
+.overlay-info-ventana {
+    position: absolute;
+    top:0;
+    left:0;
+    width:100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.info-ventana {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    background-color: white;
+    padding: 4px;
+    border-radius: 1rem;
+    min-width: 400px;
+    min-height: 600px; 
+}
+
+.info-ventana button {
+    background-color: transparent;
+    border: none;
+}
 
 /** CARRITO **/ 
 

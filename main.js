@@ -4,124 +4,136 @@ const productos = [
     { 
         id: "lampara1",
         titulo: "Lámpara1",
-        imagen: "./img/lamparas/01.jpg",
+        imagenes: ["./img/lamparas/01.jpg", "./img/lamparas/02.jpg", "./img/lamparas/03.jpg"],
         categoria: {
             nombre: "Lámparas",
             id: "lamparas"
         },
-        precio: 6500,       
+        precio: 6500,
+        informacion: "Lorem ipsum :V"       
     },
     { 
         id: "lampara2",
         titulo: "Lámpara2",
-        imagen: "./img/lamparas/02.jpg",
+        imagenes: ["./img/lamparas/01.jpg", "./img/lamparas/02.jpg", "./img/lamparas/03.jpg"],
         categoria: {
             nombre: "Lámparas",
             id: "lamparas"
         },
-        precio: 2500,       
+        precio: 2500,
+        informacion: "Lorem ipsum :V"       
     },
     { 
         id: "lampara3",
         titulo: "Lámpara3",
-        imagen: "./img/lamparas/03.jpg",
+        imagenes: ["./img/lamparas/01.jpg", "./img/lamparas/02.jpg", "./img/lamparas/03.jpg"],
         categoria: {
             nombre: "Lámparas",
             id: "lamparas"
         },
-        precio: 3500,       
+        precio: 3500,
+        informacion: "Lorem ipsum :V"       
     },
     { 
         id: "lampara4",
         titulo: "Lámpara4",
-        imagen: "./img/lamparas/03.jpg",
+        imagenes: ["./img/lamparas/01.jpg", "./img/lamparas/02.jpg", "./img/lamparas/03.jpg"],
         categoria: {
             nombre: "Lámparas",
             id: "lamparas"
         },
-        precio: 3500,       
+        precio: 3500,
+        informacion: "Lorem ipsum :V"       
     },
     // Macetas
     { 
         id: "Maceta1",
         titulo: "Maceta1",
-        imagen: "./img/macetas/maceta1.png",
+        imagenes: ["./img/macetas/maceta1.png", "./img/macetas/maceta2.png", "./img/macetas/maceta3.png"],
         categoria: {
             nombre: "Macetas",
             id: "macetas"
         },
-        precio: 3500,       
+        precio: 3500,
+        informacion: "Lorem ipsum :V"       
     },
     { 
         id: "Maceta2",
         titulo: "Maceta2",
-        imagen: "./img/macetas/maceta2.png",
+        imagenes: ["./img/macetas/maceta1.png", "./img/macetas/maceta2.png", "./img/macetas/maceta3.png"],
         categoria: {
             nombre: "Macetas",
             id: "macetas"
         },
-        precio: 3500,       
+        precio: 3500,
+        informacion: "Lorem ipsum :V"       
     },
     { 
         id: "Maceta3",
         titulo: "Maceta3",
-        imagen: "./img/macetas/maceta3.png",
+        imagenes: ["./img/macetas/maceta1.png", "./img/macetas/maceta2.png", "./img/macetas/maceta3.png"],
         categoria: {
             nombre: "Macetas",
             id: "macetas"
         },
-        precio: 3500,       
+        precio: 3500,
+        informacion: "Lorem ipsum :V"       
     },
     { 
         id: "Maceta4",
         titulo: "Maceta4",
-        imagen: "./img/macetas/maceta4.png",
+        imagenes: ["./img/macetas/maceta1.png", "./img/macetas/maceta2.png", "./img/macetas/maceta3.png"],
         categoria: {
             nombre: "Macetas",
             id: "macetas"
         },
-        precio: 3500,       
+        precio: 3500,
+        informacion: "Lorem ipsum :V"       
     },
     // Relojes
     { 
         id: "Reloj1",
         titulo: "Reloj1",
-        imagen: "./img/relojes/reloj1.png",
+        imagenes: ["./img/relojes/reloj1.png", "./img/relojes/reloj2.png", "./img/relojes/reloj3.png"],
         categoria: {
             nombre: "Relojes",
             id: "relojes"
         },
-        precio: 3500,       
+        precio: 3500,
+        informacion: "Lorem ipsum :V"       
     },
     { 
         id: "Reloj2",
         titulo: "Reloj2",
-        imagen: "./img/relojes/reloj2.png",
+        imagenes: ["./img/relojes/reloj1.png", "./img/relojes/reloj2.png", "./img/relojes/reloj3.png"],
         categoria: {
             nombre: "Relojes",
             id: "relojes"
         },
-        precio: 3500,       
+        precio: 3500,
+        informacion: "Lorem ipsum :V"       
     },
     { 
         id: "Reloj3",
         titulo: "Reloj3",
-        imagen: "./img/relojes/reloj3.png",
+        imagenes: ["./img/relojes/reloj1.png", "./img/relojes/reloj2.png", "./img/relojes/reloj3.png"],
         categoria: {
             nombre: "Relojes",
             id: "relojes"
         },
-        precio: 3500,       
+        precio: 3500,
+        informacion: "Lorem ipsum :V"       
     },
     { 
         id: "Reloj4",
         titulo: "Reloj4",
-        imagen: "./img/relojes/reloj4.png",
+        imagenes: ["./img/relojes/reloj1.png", "./img/relojes/reloj2.png", "./img/relojes/reloj3.png"],
         categoria: {
             nombre: "Relojes",
             id: "relojes"
         },
-        precio: 3500,       
+        precio: 3500,
+        informacion: "Lorem ipsum :V"       
     },
     
 
@@ -133,17 +145,24 @@ const botonesCategoterias = document.querySelectorAll('.boton-categoria');
 const tituloPrincipal = document.querySelector("#titulo-principal");
 let botonesAgregar = document.querySelectorAll('.producto-agregar');
 const numerito = document.querySelector("#numerito");
+const infoOverlay = document.querySelector(".overlay-info-ventana");
+const infoVentana = document.querySelector(".info-ventana");
 
 function cargarProductos(productosElegidos) {
 
-    contenedorProductos.innerHTML = ""; // Limpiar el contenedor de productos
+    contenedorProductos.innerHTML = ""; // Limpiar el contenedor de productos   
 
     productosElegidos.forEach(producto => {
 
         const div = document.createElement('div');
         div.classList.add('producto');
         div.innerHTML = `
-              <img class="producto-imagen" src="${producto.imagen}" alt="${producto.titulo}">
+            <div class="contenedor-imagen">
+              <img class="producto-imagen" src="${producto.imagenes[0]}" alt="${producto.titulo}">
+              <img class="producto-imagen" src="${producto.imagenes[1]}" alt="${producto.titulo}">
+              <img class="producto-imagen" src="${producto.imagenes[2]}" alt="${producto.titulo}">
+              <button type="button" class="boton-info" id="mostrar-info-${producto.id}"><i class="bi bi-info-circle-fill"></i></button>
+            </div>
               <div class="producto-detalles">
                     <h3 class="producto-titulo">${producto.titulo}</h3>
                     <p class="producto-precio">$${producto.precio}</p>
@@ -154,6 +173,24 @@ function cargarProductos(productosElegidos) {
         contenedorProductos.append(div);
         
     })
+
+    const infoBotones = document.querySelectorAll(".boton-info");
+    infoBotones.forEach(boton => {
+        boton.addEventListener("click", (e) => {
+            infoOverlay.style.display = "flex";
+            const idProducto = e.currentTarget.id.split("-")[2];
+            const productoSeleccionado = productos.find(producto => producto.id == idProducto);
+            infoVentana.innerHTML = `
+                <div style="display: flex; width: 100%; justify-content: space-between; ">
+                    <h2 >${productoSeleccionado.titulo}</h2>
+                    <button type="button" onClick=cerrarInfo()>X</button>
+                </div>
+                <div>
+                    ${productoSeleccionado.informacion}
+                </div>
+            `;
+        });
+    });
 
     actualizarBotonesAgregar();
    
@@ -223,3 +260,9 @@ function actualizarNumerito() {
     let nuevoNumerito = productosEnCarrito.reduce((acc, producto) => acc + producto.cantidad, 0);
     numerito.innerText = nuevoNumerito;
 }
+
+function cerrarInfo() {
+        infoOverlay.style.display = "none";
+}
+
+infoOverlay.addEventListener("click", cerrarInfo)
