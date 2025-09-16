@@ -166,6 +166,92 @@ main {
     padding: 2rem;
 }
 
+/* ========================= */
+/* Filtro de búsqueda        */
+/* ========================= */
+
+/* ========================= */
+/* Filtro de búsqueda bonito */
+/* ========================= */
+.filtro-busqueda {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+    background: #ffffff;
+    padding: 18px 22px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.08);
+    border: 1px solid #e0e0e0;
+}
+
+.filtro-busqueda input,
+.filtro-busqueda select {
+    flex: 1;
+    min-width: 160px;
+    padding: 10px 14px;
+    border: 1px solid #dcdcdc;
+    border-radius: 10px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.filtro-busqueda input:focus,
+.filtro-busqueda select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 6px rgba(0, 123, 255, 0.2);
+}
+
+.filtro-busqueda button {
+    padding: 10px 16px;
+    border-radius: 10px;
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filtro-busqueda #btnFiltrar {
+    background: #007bff;
+    color: #fff;
+}
+
+.filtro-busqueda #btnFiltrar:hover {
+    background: #0056b3;
+}
+
+.filtro-busqueda #btnLimpiar {
+    background: #6c757d;
+    color: #fff;
+}
+
+.filtro-busqueda #btnLimpiar:hover {
+    background: #495057;
+}
+
+.filtro-busqueda select#ordenarProductos {
+    min-width: 180px;
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+    .filtro-busqueda {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .filtro-busqueda input,
+    .filtro-busqueda select,
+    .filtro-busqueda button {
+        width: 100%;
+    }
+}
+
+
+
 .titulo-principal {
     color: var(--primary-color-dark);
     margin-bottom: 2rem;
@@ -405,3 +491,6 @@ main {
 .disabled {
     display: none;
 }
+
+
+

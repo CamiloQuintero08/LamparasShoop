@@ -12,7 +12,7 @@
         
         <aside>
             <header>
-                <h1 class="logo">LamparasShoop</h1>
+                <h1 class="logo">Aura Artesanal</h1>
             </header>
             <nav>
                 <ul class="menu">
@@ -40,6 +40,28 @@
             </footer>
         </aside>
         <main> 
+            <div class="filtro-busqueda">
+                <input type="text" id="busquedaNombre" placeholder="Buscar producto...">
+                <select id="busquedaCategoria">
+                    <option value="todos">Todas las categorías</option>
+                    <option value="lamparas">Lámparas</option>
+                    <option value="macetas">Macetas</option>
+                    <option value="relojes">Relojes</option>
+                </select>
+                <select id="ordenarProductos">
+                    <option value="ninguno">Ordenar por...</option>
+                    <option value="precioAsc">Precio: menor a mayor</option>
+                    <option value="precioDesc">Precio: mayor a menor</option>
+                    <option value="nombreAsc">Nombre: A - Z</option>
+                    <option value="nombreDesc">Nombre: Z - A</option>
+                </select>
+
+                <input type="number" id="precioMin" placeholder="Precio mín" min="0">
+                <input type="number" id="precioMax" placeholder="Precio máx" min="0">
+                <button id="btnFiltrar">Filtrar</button>
+                <button id="btnLimpiar">Limpiar</button>
+            </div>
+
             <h2 class="titulo-principal" id="titulo-principal">Todos los productos</h2>
             <div id="contenedor-productos"  class="contenedor-productos">
                 

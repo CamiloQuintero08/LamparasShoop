@@ -147,6 +147,13 @@ let botonesAgregar = document.querySelectorAll('.producto-agregar');
 const numerito = document.querySelector("#numerito");
 const infoOverlay = document.querySelector(".overlay-info-ventana");
 const infoVentana = document.querySelector(".info-ventana");
+const busquedaNombre = document.getElementById("busquedaNombre");
+const busquedaCategoria = document.getElementById("busquedaCategoria");
+const precioMin = document.getElementById("precioMin");
+const precioMax = document.getElementById("precioMax");
+const btnFiltrar = document.getElementById("btnFiltrar");
+const btnLimpiar = document.getElementById("btnLimpiar");
+const ordenarProductos = document.getElementById("ordenarProductos");
 
 function cargarProductos(productosElegidos) {
 
@@ -266,3 +273,61 @@ function cerrarInfo() {
 }
 
 infoOverlay.addEventListener("click", cerrarInfo)
+
+function filtrarProductos() {
+    let nombre = busquedaNombre.value.toLowerCase();
+    let categoria = busquedaCategoria.value;
+    let min = precioMin.value ? parseFloat(precioMin.value) : 0;
+    let max = precioMax.value ? parseFloat(precioMax.value) : Infinity;
+
+    let filtrados = productos.filter(p => {
+        let coincideNombre = p.titulo.toLowerCase().includes(nombre);
+        let coincideCategoria = categoria === "todos" || p.categoria.id === categoria;
+        let coincidePrecio = p.precio >= min && p.precio <= max;
+        return coincideNombre && coincideCategoria && coincidePrecio;
+    });
+
+    // Ordenamiento
+    if (ordenarProductos.value === "precioAsc") {
+        filtrados.sort((a, b) => a.precio - b.precio);
+    } else if (ordenarProductos.value === "precioDesc") {
+        filtrados.sort((a, b) => b.precio - a.precio);
+    } else if (ordenarProductos.value === "nombreAsc") {
+        filtrados.sort((a, b) => a.titulo.localeCompare(b.titulo));
+    } else if (ordenarProductos.value === "nombreDesc") {
+        filtrados.sort((a, b) => b.titulo.localeCompare(a.titulo));
+    }
+
+    if (categoria !== "todos") {
+        const productoCategoria = productos.find(producto => producto.categoria.id === categoria);
+        if (productoCategoria) {
+            tituloPrincipal.innerText = productoCategoria.categoria.nombre;
+        }
+    } else {
+        tituloPrincipal.innerText = "Todos los productos";
+    }
+
+    cargarProductos(filtrados);
+}
+
+// Ejecutar automáticamente al cambiar orden
+ordenarProductos.addEventListener("change", filtrarProductos);
+
+
+// Función para limpiar los filtros
+function limpiarFiltros() {
+    busquedaNombre.value = "";
+    busquedaCategoria.value = "todos";
+    precioMin.value = "";
+    precioMax.value = "";
+    tituloPrincipal.innerText = "Todos los productos";
+    cargarProductos(productos);
+}
+
+// Eventos de los botones del filtro
+if (btnFiltrar && btnLimpiar) {
+    btnFiltrar.addEventListener("click", filtrarProductos);
+    btnLimpiar.addEventListener("click", limpiarFiltros);
+}
+
+
