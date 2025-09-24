@@ -1,7 +1,7 @@
 // PRODUCTOS
 const productos = [
     //Lamparas
-    { 
+    {
         id: "lampara1",
         titulo: "Lámpara1",
         imagenes: ["./img/lamparas/01.jpg", "./img/lamparas/02.jpg", "./img/lamparas/03.jpg"],
@@ -10,9 +10,9 @@ const productos = [
             id: "lamparas"
         },
         precio: 6500,
-        informacion: "Lorem ipsum :V"       
+        informacion: "Lorem ipsum :V"
     },
-    { 
+    {
         id: "lampara2",
         titulo: "Lámpara2",
         imagenes: ["./img/lamparas/01.jpg", "./img/lamparas/02.jpg", "./img/lamparas/03.jpg"],
@@ -21,9 +21,9 @@ const productos = [
             id: "lamparas"
         },
         precio: 2500,
-        informacion: "Lorem ipsum :V"       
+        informacion: "Lorem ipsum :V"
     },
-    { 
+    {
         id: "lampara3",
         titulo: "Lámpara3",
         imagenes: ["./img/lamparas/01.jpg", "./img/lamparas/02.jpg", "./img/lamparas/03.jpg"],
@@ -32,9 +32,9 @@ const productos = [
             id: "lamparas"
         },
         precio: 3500,
-        informacion: "Lorem ipsum :V"       
+        informacion: "Lorem ipsum :V"
     },
-    { 
+    {
         id: "lampara4",
         titulo: "Lámpara4",
         imagenes: ["./img/lamparas/01.jpg", "./img/lamparas/02.jpg", "./img/lamparas/03.jpg"],
@@ -43,10 +43,10 @@ const productos = [
             id: "lamparas"
         },
         precio: 3500,
-        informacion: "Lorem ipsum :V"       
+        informacion: "Lorem ipsum :V"
     },
     // Macetas
-    { 
+    {
         id: "Maceta1",
         titulo: "Maceta1",
         imagenes: ["./img/macetas/maceta1.png", "./img/macetas/maceta2.png", "./img/macetas/maceta3.png"],
@@ -55,9 +55,9 @@ const productos = [
             id: "macetas"
         },
         precio: 3500,
-        informacion: "Lorem ipsum :V"       
+        informacion: "Lorem ipsum :V"
     },
-    { 
+    {
         id: "Maceta2",
         titulo: "Maceta2",
         imagenes: ["./img/macetas/maceta1.png", "./img/macetas/maceta2.png", "./img/macetas/maceta3.png"],
@@ -66,9 +66,9 @@ const productos = [
             id: "macetas"
         },
         precio: 3500,
-        informacion: "Lorem ipsum :V"       
+        informacion: "Lorem ipsum :V"
     },
-    { 
+    {
         id: "Maceta3",
         titulo: "Maceta3",
         imagenes: ["./img/macetas/maceta1.png", "./img/macetas/maceta2.png", "./img/macetas/maceta3.png"],
@@ -77,9 +77,9 @@ const productos = [
             id: "macetas"
         },
         precio: 3500,
-        informacion: "Lorem ipsum :V"       
+        informacion: "Lorem ipsum :V"
     },
-    { 
+    {
         id: "Maceta4",
         titulo: "Maceta4",
         imagenes: ["./img/macetas/maceta1.png", "./img/macetas/maceta2.png", "./img/macetas/maceta3.png"],
@@ -88,10 +88,10 @@ const productos = [
             id: "macetas"
         },
         precio: 3500,
-        informacion: "Lorem ipsum :V"       
+        informacion: "Lorem ipsum :V"
     },
     // Relojes
-    { 
+    {
         id: "Reloj1",
         titulo: "Reloj1",
         imagenes: ["./img/relojes/reloj1.png", "./img/relojes/reloj2.png", "./img/relojes/reloj3.png"],
@@ -100,9 +100,9 @@ const productos = [
             id: "relojes"
         },
         precio: 3500,
-        informacion: "Lorem ipsum :V"       
+        informacion: "Lorem ipsum :V"
     },
-    { 
+    {
         id: "Reloj2",
         titulo: "Reloj2",
         imagenes: ["./img/relojes/reloj1.png", "./img/relojes/reloj2.png", "./img/relojes/reloj3.png"],
@@ -111,9 +111,9 @@ const productos = [
             id: "relojes"
         },
         precio: 3500,
-        informacion: "Lorem ipsum :V"       
+        informacion: "Lorem ipsum :V"
     },
-    { 
+    {
         id: "Reloj3",
         titulo: "Reloj3",
         imagenes: ["./img/relojes/reloj1.png", "./img/relojes/reloj2.png", "./img/relojes/reloj3.png"],
@@ -122,9 +122,9 @@ const productos = [
             id: "relojes"
         },
         precio: 3500,
-        informacion: "Lorem ipsum :V"       
+        informacion: "Lorem ipsum :V"
     },
-    { 
+    {
         id: "Reloj4",
         titulo: "Reloj4",
         imagenes: ["./img/relojes/reloj1.png", "./img/relojes/reloj2.png", "./img/relojes/reloj3.png"],
@@ -133,9 +133,9 @@ const productos = [
             id: "relojes"
         },
         precio: 3500,
-        informacion: "Lorem ipsum :V"       
+        informacion: "Lorem ipsum :V"
     },
-    
+
 
 ]
 
@@ -157,7 +157,7 @@ const ordenarProductos = document.getElementById("ordenarProductos");
 
 function cargarProductos(productosElegidos) {
 
-    contenedorProductos.innerHTML = ""; // Limpiar el contenedor de productos   
+    contenedorProductos.innerHTML = ""; // Limpiar el contenedor de productos
 
     productosElegidos.forEach(producto => {
 
@@ -175,10 +175,10 @@ function cargarProductos(productosElegidos) {
                     <p class="producto-precio">$${producto.precio}</p>
                     <button class="producto-agregar" id="${producto.id}">Agregar</button>
               </div>
-        `;	
+        `;
 
         contenedorProductos.append(div);
-        
+
     })
 
     const infoBotones = document.querySelectorAll(".boton-info");
@@ -200,7 +200,7 @@ function cargarProductos(productosElegidos) {
     });
 
     actualizarBotonesAgregar();
-   
+
 }
 
 cargarProductos(productos);
@@ -208,18 +208,18 @@ cargarProductos(productos);
 botonesCategoterias.forEach(boton => {
     boton.addEventListener('click', (e) => {
         botonesCategoterias.forEach(boton => boton.classList.remove('active'));
-         e.currentTarget.classList.add('active');
+        e.currentTarget.classList.add('active');
 
-            if (e.currentTarget.id !== "todos") {
-                const productoCategoria = productos.find(producto => producto.categoria.id === e.currentTarget.id);
-                tituloPrincipal.innerText = productoCategoria.categoria.nombre;
+        if (e.currentTarget.id !== "todos") {
+            const productoCategoria = productos.find(producto => producto.categoria.id === e.currentTarget.id);
+            tituloPrincipal.innerText = productoCategoria.categoria.nombre;
 
-                const productosBoton = productos.filter(producto => producto.categoria.id === e.currentTarget.id);
-                cargarProductos(productosBoton);
-            } else {
-                tituloPrincipal.innerText = "Todos los productos";
-                cargarProductos(productos);
-            }
+            const productosBoton = productos.filter(producto => producto.categoria.id === e.currentTarget.id);
+            cargarProductos(productosBoton);
+        } else {
+            tituloPrincipal.innerText = "Todos los productos";
+            cargarProductos(productos);
+        }
     })
 })
 
@@ -238,14 +238,14 @@ let productosEnCarrito;
 let productosEnCarritoLS = localStorage.getItem("productos-en-carrito");
 
 if (productosEnCarritoLS) {
-    productosEnCarrito = JSON.parse(productosEnCarritoLS); 
+    productosEnCarrito = JSON.parse(productosEnCarritoLS);
     actualizarNumerito();
 } else {
     productosEnCarrito = [];
 }
 
 function agregarAlCarrito(e) {
-  
+
     const idBoton = e.currentTarget.id;
     const productosAgregado = productos.find(producto => producto.id === idBoton);
 
@@ -256,8 +256,8 @@ function agregarAlCarrito(e) {
     } else {
         productosAgregado.cantidad = 1;
         productosEnCarrito.push(productosAgregado);
-    } 
-    
+    }
+
     actualizarNumerito();
 
     localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
@@ -269,7 +269,7 @@ function actualizarNumerito() {
 }
 
 function cerrarInfo() {
-        infoOverlay.style.display = "none";
+    infoOverlay.style.display = "none";
 }
 
 infoOverlay.addEventListener("click", cerrarInfo)
@@ -329,5 +329,3 @@ if (btnFiltrar && btnLimpiar) {
     btnFiltrar.addEventListener("click", filtrarProductos);
     btnLimpiar.addEventListener("click", limpiarFiltros);
 }
-
-

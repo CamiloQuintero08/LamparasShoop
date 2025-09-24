@@ -365,7 +365,7 @@ main {
     top: 10px;
     border-radius: 100%;
     cursor: pointer;
-    
+
 }
 
 .boton-info:hover{
@@ -392,7 +392,7 @@ main {
     padding: 4px;
     border-radius: 1rem;
     min-width: 400px;
-    min-height: 600px; 
+    min-height: 600px;
 }
 
 .info-ventana button {
@@ -400,7 +400,7 @@ main {
     border: none;
 }
 
-/** CARRITO **/ 
+/** CARRITO **/
 
 .contenedor-carrito {
     display: flex;
@@ -491,6 +491,4 @@ main {
 .disabled {
     display: none;
 }
-
-
 
