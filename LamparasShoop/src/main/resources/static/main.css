@@ -492,3 +492,54 @@ main {
     display: none;
 }
 
+.boton-agregar {
+    background-color: transparent;
+    border: 2px solid #fff;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-weight: 600;
+    padding: 1rem;
+    font-size: .85rem;
+    width: 100%;
+    border-radius: 1rem;
+    transition: all 0.2s ease;
+}
+
+.boton-agregar:hover {
+    background-color: #fff;
+    color: var(--primary-color);
+    transform: scale(1.05);
+}
+
+.btn-volver {
+    background-color: #333;
+    color: #fff;
+    padding: .6rem 1.2rem;
+    border-radius: .8rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.btn-volver:hover {
+    background-color: #555;
+    transform: scale(1.05);
+}
+
+.btn-guardar {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: .6rem 1.2rem;
+    border-radius: .8rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-guardar:hover {
+    background-color: var(--primary-color-dark);
+    transform: scale(1.05);
+}
+

@@ -1,331 +1,170 @@
-// PRODUCTOS
-const productos = [
-    //Lamparas
-    {
-        id: "lampara1",
-        titulo: "Lámpara1",
-        imagenes: ["./img/lamparas/01.jpg", "./img/lamparas/02.jpg", "./img/lamparas/03.jpg"],
-        categoria: {
-            nombre: "Lámparas",
-            id: "lamparas"
-        },
-        precio: 6500,
-        informacion: "Lorem ipsum :V"
-    },
-    {
-        id: "lampara2",
-        titulo: "Lámpara2",
-        imagenes: ["./img/lamparas/01.jpg", "./img/lamparas/02.jpg", "./img/lamparas/03.jpg"],
-        categoria: {
-            nombre: "Lámparas",
-            id: "lamparas"
-        },
-        precio: 2500,
-        informacion: "Lorem ipsum :V"
-    },
-    {
-        id: "lampara3",
-        titulo: "Lámpara3",
-        imagenes: ["./img/lamparas/01.jpg", "./img/lamparas/02.jpg", "./img/lamparas/03.jpg"],
-        categoria: {
-            nombre: "Lámparas",
-            id: "lamparas"
-        },
-        precio: 3500,
-        informacion: "Lorem ipsum :V"
-    },
-    {
-        id: "lampara4",
-        titulo: "Lámpara4",
-        imagenes: ["./img/lamparas/01.jpg", "./img/lamparas/02.jpg", "./img/lamparas/03.jpg"],
-        categoria: {
-            nombre: "Lámparas",
-            id: "lamparas"
-        },
-        precio: 3500,
-        informacion: "Lorem ipsum :V"
-    },
-    // Macetas
-    {
-        id: "Maceta1",
-        titulo: "Maceta1",
-        imagenes: ["./img/macetas/maceta1.png", "./img/macetas/maceta2.png", "./img/macetas/maceta3.png"],
-        categoria: {
-            nombre: "Macetas",
-            id: "macetas"
-        },
-        precio: 3500,
-        informacion: "Lorem ipsum :V"
-    },
-    {
-        id: "Maceta2",
-        titulo: "Maceta2",
-        imagenes: ["./img/macetas/maceta1.png", "./img/macetas/maceta2.png", "./img/macetas/maceta3.png"],
-        categoria: {
-            nombre: "Macetas",
-            id: "macetas"
-        },
-        precio: 3500,
-        informacion: "Lorem ipsum :V"
-    },
-    {
-        id: "Maceta3",
-        titulo: "Maceta3",
-        imagenes: ["./img/macetas/maceta1.png", "./img/macetas/maceta2.png", "./img/macetas/maceta3.png"],
-        categoria: {
-            nombre: "Macetas",
-            id: "macetas"
-        },
-        precio: 3500,
-        informacion: "Lorem ipsum :V"
-    },
-    {
-        id: "Maceta4",
-        titulo: "Maceta4",
-        imagenes: ["./img/macetas/maceta1.png", "./img/macetas/maceta2.png", "./img/macetas/maceta3.png"],
-        categoria: {
-            nombre: "Macetas",
-            id: "macetas"
-        },
-        precio: 3500,
-        informacion: "Lorem ipsum :V"
-    },
-    // Relojes
-    {
-        id: "Reloj1",
-        titulo: "Reloj1",
-        imagenes: ["./img/relojes/reloj1.png", "./img/relojes/reloj2.png", "./img/relojes/reloj3.png"],
-        categoria: {
-            nombre: "Relojes",
-            id: "relojes"
-        },
-        precio: 3500,
-        informacion: "Lorem ipsum :V"
-    },
-    {
-        id: "Reloj2",
-        titulo: "Reloj2",
-        imagenes: ["./img/relojes/reloj1.png", "./img/relojes/reloj2.png", "./img/relojes/reloj3.png"],
-        categoria: {
-            nombre: "Relojes",
-            id: "relojes"
-        },
-        precio: 3500,
-        informacion: "Lorem ipsum :V"
-    },
-    {
-        id: "Reloj3",
-        titulo: "Reloj3",
-        imagenes: ["./img/relojes/reloj1.png", "./img/relojes/reloj2.png", "./img/relojes/reloj3.png"],
-        categoria: {
-            nombre: "Relojes",
-            id: "relojes"
-        },
-        precio: 3500,
-        informacion: "Lorem ipsum :V"
-    },
-    {
-        id: "Reloj4",
-        titulo: "Reloj4",
-        imagenes: ["./img/relojes/reloj1.png", "./img/relojes/reloj2.png", "./img/relojes/reloj3.png"],
-        categoria: {
-            nombre: "Relojes",
-            id: "relojes"
-        },
-        precio: 3500,
-        informacion: "Lorem ipsum :V"
-    },
+// ===============================
+// VARIABLES GLOBALES
+// ===============================
+let productos = [];
+let productosFiltrados = [];
 
-
-]
-
-
-const contenedorProductos = document.getElementById('contenedor-productos');
-const botonesCategoterias = document.querySelectorAll('.boton-categoria');
+const contenedorProductos = document.querySelector("#contenedor-productos");
 const tituloPrincipal = document.querySelector("#titulo-principal");
-let botonesAgregar = document.querySelectorAll('.producto-agregar');
-const numerito = document.querySelector("#numerito");
-const infoOverlay = document.querySelector(".overlay-info-ventana");
-const infoVentana = document.querySelector(".info-ventana");
-const busquedaNombre = document.getElementById("busquedaNombre");
-const busquedaCategoria = document.getElementById("busquedaCategoria");
-const precioMin = document.getElementById("precioMin");
-const precioMax = document.getElementById("precioMax");
-const btnFiltrar = document.getElementById("btnFiltrar");
-const btnLimpiar = document.getElementById("btnLimpiar");
-const ordenarProductos = document.getElementById("ordenarProductos");
 
-function cargarProductos(productosElegidos) {
+const inputBusqueda = document.querySelector("#busquedaNombre");
+const selectCategoria = document.querySelector("#busquedaCategoria");
+const selectOrden = document.querySelector("#ordenarProductos");
+const inputPrecioMin = document.querySelector("#precioMin");
+const inputPrecioMax = document.querySelector("#precioMax");
+const btnFiltrar = document.querySelector("#btnFiltrar");
+const btnLimpiar = document.querySelector("#btnLimpiar");
 
-    contenedorProductos.innerHTML = ""; // Limpiar el contenedor de productos
+let botonesAgregar = document.querySelectorAll(".agregar-carrito");
+let numerito = document.querySelector("#numerito");
 
-    productosElegidos.forEach(producto => {
+let productosEnCarrito = JSON.parse(localStorage.getItem("productos-en-carrito")) || [];
 
-        const div = document.createElement('div');
-        div.classList.add('producto');
+// ===============================
+// CARGAR PRODUCTOS DESDE EL BACKEND
+// ===============================
+async function cargarProductos() {
+    try {
+        // ✅ Llamamos al endpoint JSON correcto
+        const respuesta = await fetch("/productos/api");
+        if (!respuesta.ok) throw new Error("Error al obtener productos del servidor");
+
+        productos = await respuesta.json();
+        productosFiltrados = productos;
+        mostrarProductos(productos);
+    } catch (error) {
+        console.error("Error:", error);
+        contenedorProductos.innerHTML = `<p>Error al cargar los productos.</p>`;
+    }
+}
+
+// ===============================
+// MOSTRAR PRODUCTOS EN EL HTML
+// ===============================
+function mostrarProductos(lista) {
+    contenedorProductos.innerHTML = "";
+
+    if (lista.length === 0) {
+        contenedorProductos.innerHTML = `<p>No se encontraron productos.</p>`;
+        return;
+    }
+
+    lista.forEach(prod => {
+        const div = document.createElement("div");
+        div.classList.add("producto");
         div.innerHTML = `
-            <div class="contenedor-imagen">
-              <img class="producto-imagen" src="${producto.imagenes[0]}" alt="${producto.titulo}">
-              <img class="producto-imagen" src="${producto.imagenes[1]}" alt="${producto.titulo}">
-              <img class="producto-imagen" src="${producto.imagenes[2]}" alt="${producto.titulo}">
-              <button type="button" class="boton-info" id="mostrar-info-${producto.id}"><i class="bi bi-info-circle-fill"></i></button>
+            <div class="producto-detalle">
+                <img src="${prod.imagenUrl || '/img/default.jpg'}" alt="${prod.nombre}">
+                <h3>${prod.nombre}</h3>
+                <p>$${prod.precio}</p>
+                <button class="agregar-carrito" data-id="${prod.id}">
+                    <i class="bi bi-cart-plus"></i> Agregar al carrito
+                </button>
             </div>
-              <div class="producto-detalles">
-                    <h3 class="producto-titulo">${producto.titulo}</h3>
-                    <p class="producto-precio">$${producto.precio}</p>
-                    <button class="producto-agregar" id="${producto.id}">Agregar</button>
-              </div>
         `;
-
-        contenedorProductos.append(div);
-
-    })
-
-    const infoBotones = document.querySelectorAll(".boton-info");
-    infoBotones.forEach(boton => {
-        boton.addEventListener("click", (e) => {
-            infoOverlay.style.display = "flex";
-            const idProducto = e.currentTarget.id.split("-")[2];
-            const productoSeleccionado = productos.find(producto => producto.id == idProducto);
-            infoVentana.innerHTML = `
-                <div style="display: flex; width: 100%; justify-content: space-between; ">
-                    <h2 >${productoSeleccionado.titulo}</h2>
-                    <button type="button" onClick=cerrarInfo()>X</button>
-                </div>
-                <div>
-                    ${productoSeleccionado.informacion}
-                </div>
-            `;
-        });
+        contenedorProductos.appendChild(div);
     });
 
     actualizarBotonesAgregar();
-
 }
 
-cargarProductos(productos);
-
-botonesCategoterias.forEach(boton => {
-    boton.addEventListener('click', (e) => {
-        botonesCategoterias.forEach(boton => boton.classList.remove('active'));
-        e.currentTarget.classList.add('active');
-
-        if (e.currentTarget.id !== "todos") {
-            const productoCategoria = productos.find(producto => producto.categoria.id === e.currentTarget.id);
-            tituloPrincipal.innerText = productoCategoria.categoria.nombre;
-
-            const productosBoton = productos.filter(producto => producto.categoria.id === e.currentTarget.id);
-            cargarProductos(productosBoton);
-        } else {
-            tituloPrincipal.innerText = "Todos los productos";
-            cargarProductos(productos);
-        }
-    })
-})
-
-
+// ===============================
+// BOTONES DE AGREGAR AL CARRITO
+// ===============================
 function actualizarBotonesAgregar() {
-    botonesAgregar = document.querySelectorAll('.producto-agregar');
+    botonesAgregar = document.querySelectorAll(".agregar-carrito");
 
     botonesAgregar.forEach(boton => {
-        boton.addEventListener('click', agregarAlCarrito);
-    })
-
-}
-
-let productosEnCarrito;
-
-let productosEnCarritoLS = localStorage.getItem("productos-en-carrito");
-
-if (productosEnCarritoLS) {
-    productosEnCarrito = JSON.parse(productosEnCarritoLS);
-    actualizarNumerito();
-} else {
-    productosEnCarrito = [];
+        boton.addEventListener("click", agregarAlCarrito);
+    });
 }
 
 function agregarAlCarrito(e) {
+    const idProducto = e.currentTarget.dataset.id;
+    const productoAgregado = productos.find(prod => prod.id == idProducto);
 
-    const idBoton = e.currentTarget.id;
-    const productosAgregado = productos.find(producto => producto.id === idBoton);
+    if (!productoAgregado) return;
 
-    if (productosEnCarrito.some(producto => producto.id === idBoton)) {
-        const index = productosEnCarrito.findIndex(producto => producto.id === idBoton);
-        productosEnCarrito[index].cantidad++;
+    const productoEnCarrito = productosEnCarrito.find(p => p.id == idProducto);
 
+    if (productoEnCarrito) {
+        productoEnCarrito.cantidad++;
     } else {
-        productosAgregado.cantidad = 1;
-        productosEnCarrito.push(productosAgregado);
+        productosEnCarrito.push({ ...productoAgregado, cantidad: 1 });
     }
 
     actualizarNumerito();
-
     localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
 }
 
 function actualizarNumerito() {
-    let nuevoNumerito = productosEnCarrito.reduce((acc, producto) => acc + producto.cantidad, 0);
+    const nuevoNumerito = productosEnCarrito.reduce((acc, prod) => acc + prod.cantidad, 0);
     numerito.innerText = nuevoNumerito;
 }
 
-function cerrarInfo() {
-    infoOverlay.style.display = "none";
-}
-
-infoOverlay.addEventListener("click", cerrarInfo)
-
+// ===============================
+// FILTROS Y BUSQUEDA
+// ===============================
 function filtrarProductos() {
-    let nombre = busquedaNombre.value.toLowerCase();
-    let categoria = busquedaCategoria.value;
-    let min = precioMin.value ? parseFloat(precioMin.value) : 0;
-    let max = precioMax.value ? parseFloat(precioMax.value) : Infinity;
+    const nombre = inputBusqueda.value.toLowerCase();
+    const categoria = selectCategoria.value;
+    const precioMin = parseFloat(inputPrecioMin.value) || 0;
+    const precioMax = parseFloat(inputPrecioMax.value) || Infinity;
 
-    let filtrados = productos.filter(p => {
-        let coincideNombre = p.titulo.toLowerCase().includes(nombre);
-        let coincideCategoria = categoria === "todos" || p.categoria.id === categoria;
-        let coincidePrecio = p.precio >= min && p.precio <= max;
+    productosFiltrados = productos.filter(p => {
+        const coincideNombre = p.nombre.toLowerCase().includes(nombre);
+        const coincideCategoria = categoria === "todos" || p.categoria?.toLowerCase() === categoria;
+        const coincidePrecio = p.precio >= precioMin && p.precio <= precioMax;
         return coincideNombre && coincideCategoria && coincidePrecio;
     });
 
-    // Ordenamiento
-    if (ordenarProductos.value === "precioAsc") {
-        filtrados.sort((a, b) => a.precio - b.precio);
-    } else if (ordenarProductos.value === "precioDesc") {
-        filtrados.sort((a, b) => b.precio - a.precio);
-    } else if (ordenarProductos.value === "nombreAsc") {
-        filtrados.sort((a, b) => a.titulo.localeCompare(b.titulo));
-    } else if (ordenarProductos.value === "nombreDesc") {
-        filtrados.sort((a, b) => b.titulo.localeCompare(a.titulo));
-    }
-
-    if (categoria !== "todos") {
-        const productoCategoria = productos.find(producto => producto.categoria.id === categoria);
-        if (productoCategoria) {
-            tituloPrincipal.innerText = productoCategoria.categoria.nombre;
-        }
-    } else {
-        tituloPrincipal.innerText = "Todos los productos";
-    }
-
-    cargarProductos(filtrados);
+    ordenarProductos();
+    mostrarProductos(productosFiltrados);
 }
 
-// Ejecutar automáticamente al cambiar orden
-ordenarProductos.addEventListener("change", filtrarProductos);
+function ordenarProductos() {
+    const orden = selectOrden.value;
 
+    switch (orden) {
+        case "precioAsc":
+            productosFiltrados.sort((a, b) => a.precio - b.precio);
+            break;
+        case "precioDesc":
+            productosFiltrados.sort((a, b) => b.precio - a.precio);
+            break;
+        case "nombreAsc":
+            productosFiltrados.sort((a, b) => a.nombre.localeCompare(b.nombre));
+            break;
+        case "nombreDesc":
+            productosFiltrados.sort((a, b) => b.nombre.localeCompare(a.nombre));
+            break;
+        default:
+            break;
+    }
+}
 
-// Función para limpiar los filtros
 function limpiarFiltros() {
-    busquedaNombre.value = "";
-    busquedaCategoria.value = "todos";
-    precioMin.value = "";
-    precioMax.value = "";
-    tituloPrincipal.innerText = "Todos los productos";
-    cargarProductos(productos);
+    inputBusqueda.value = "";
+    selectCategoria.value = "todos";
+    selectOrden.value = "ninguno";
+    inputPrecioMin.value = "";
+    inputPrecioMax.value = "";
+    productosFiltrados = productos;
+    mostrarProductos(productos);
 }
 
-// Eventos de los botones del filtro
-if (btnFiltrar && btnLimpiar) {
-    btnFiltrar.addEventListener("click", filtrarProductos);
-    btnLimpiar.addEventListener("click", limpiarFiltros);
-}
+// ===============================
+// EVENTOS
+// ===============================
+btnFiltrar.addEventListener("click", filtrarProductos);
+btnLimpiar.addEventListener("click", limpiarFiltros);
+
+// ===============================
+// INICIO
+// ===============================
+document.addEventListener("DOMContentLoaded", () => {
+    cargarProductos();
+    actualizarNumerito();
+});
+
+

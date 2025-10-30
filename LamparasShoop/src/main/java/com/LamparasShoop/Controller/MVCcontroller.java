@@ -14,5 +14,9 @@ public class MVCcontroller {
         public String carrito(){
         return "carrito";
         }
+        @GetMapping("/lista")
+        public String lista(){ return "lista";}
+
+
 
 }
