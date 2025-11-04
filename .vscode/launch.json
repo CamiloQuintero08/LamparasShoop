@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-LamparasShoopApplication<LamparasShoop>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.LamparasShoop.LamparasShoopApplication",
+            "projectName": "LamparasShoop",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
