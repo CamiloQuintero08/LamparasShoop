@@ -181,7 +181,7 @@ main {
     gap: 12px;
     justify-content: center;
     align-items: center;
-    background: #ffffff;
+    background: #75ac92;
     padding: 18px 22px;
     border-radius: 12px;
     margin-bottom: 25px;
@@ -203,7 +203,7 @@ main {
 
 .filtro-busqueda input:focus,
 .filtro-busqueda select:focus {
-    border-color: #007bff;
+    border-color: #111242;
     box-shadow: 0 0 6px rgba(0, 123, 255, 0.2);
 }
 
@@ -218,7 +218,7 @@ main {
 }
 
 .filtro-busqueda #btnFiltrar {
-    background: #007bff;
+    background: #111242;
     color: #fff;
 }
 
@@ -227,12 +227,12 @@ main {
 }
 
 .filtro-busqueda #btnLimpiar {
-    background: #6c757d;
+    background: #111242;
     color: #fff;
 }
 
 .filtro-busqueda #btnLimpiar:hover {
-    background: #495057;
+    background: #0056b3;
 }
 
 .filtro-busqueda select#ordenarProductos {
