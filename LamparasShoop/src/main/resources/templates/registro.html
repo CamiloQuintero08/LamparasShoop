@@ -4,23 +4,170 @@
     <meta charset="UTF-8">
     <title>Registro</title>
     <style>
-        /* Puedes usar los mismos estilos que la página de login */
+        @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
+
+        :root {
+            --primary-color: #75ac92;
+            --primary-color-dark: #111242;
+            --secondary-color: #b8ece1;
+            --background-color: #ffffff;
+            --text-color: #ffd903;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Rubik', sans-serif;
+        }
+
+        body.auth-body {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .auth-container {
+            background: var(--background-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 3rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            width: 90%;
+            max-width: 950px;
+            animation: fadeIn 0.8s ease-in-out;
+            gap: 3rem;
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0; transform: translateY(-15px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+
+        .auth-info {
+            flex: 1;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .auth-info h2 {
+            color: var(--primary-color-dark);
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .auth-info p {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .auth-image {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 1rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        input {
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 0.8rem;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            border-color: var(--primary-color);
+        }
+
+        .auth-btn {
+            background: var(--primary-color);
+            color: var(--background-color);
+            border: none;
+            padding: 0.9rem;
+            border-radius: 0.8rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .auth-btn:hover {
+            background: var(--primary-color-dark);
+            transform: scale(1.03);
+        }
+
+        .auth-text {
+            margin-top: 1rem;
+            color: #444;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .auth-text a {
+            color: var(--primary-color-dark);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .auth-text a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 900px) {
+            .auth-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .auth-info {
+                align-items: center;
+            }
+
+            .auth-image {
+                max-width: 250px;
+            }
+        }
     </style>
 </head>
-<body>
-<div class="login-container">
-    <h2>Registro de Usuario</h2>
-    <form action="/registro" method="post">
-        <input type="text" name="username" placeholder="Nombre De Usuario" required>
-        <input type="password" name="password" placeholder="Contraseña" required>
-        <input type="text" name="name" placeholder="Nombre" required>
-        <input type="text" name="lastName" placeholder="Apellido" required>
-        <input type="email" name="email" placeholder="Correo" required>
-        <input type="number" name="phone" placeholder="Telefono" required>
-        <input type="date" name="dateOfBirth" placeholder="Fecha De Nacimiento" required>
-        <button type="submit">Registrarse</button>
-    </form>
-    <p>¿Ya tienes una cuenta? <a href="/login">Inicia Sesión</a></p>
-</div>
+<body class="auth-body">
+    <div class="auth-container">
+        <div class="auth-info">
+            <h2>Registro de Usuario</h2>
+            <p>Crea una cuenta para acceder a todos nuestros servicios.<br>
+            Completa tus datos y empieza a disfrutar de la plataforma.</p>
+            <img src="/img/Resistro.png" alt="Registro" class="auth-image">
+        </div>
+
+        <form action="/registro" method="post">
+            <input type="text" name="username" placeholder="Nombre de Usuario" required>
+            <input type="password" name="password" placeholder="Contraseña" required>
+            <input type="text" name="name" placeholder="Nombre" required>
+            <input type="text" name="lastName" placeholder="Apellido" required>
+            <input type="email" name="email" placeholder="Correo Electrónico" required>
+            <input type="number" name="phone" placeholder="Teléfono" required>
+            <input type="date" name="dateOfBirth" required>
+            <button type="submit" class="auth-btn">Registrarse</button>
+            <p class="auth-text">¿Ya tienes una cuenta? <a href="/login">Inicia sesión</a></p>
+        </form>
+    </div>
 </body>
 </html>
+
