@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda Lámparas</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+<div class="wrapper">
+
+    <aside>
+        <header>
+            <h1 class="logo">Aura Artesanal</h1>
+        </header>
+
+        <nav>
+            <ul class="menu">
+                <li>
+                    <button id="todos" class="boton-menu boton-categoria active">
+                        <i class="bi bi-hand-index-thumb-fill"></i>Todos los productos
+                    </button>
+                </li>
+                <li>
+                    <button id="lamparas" class="boton-menu boton-categoria">
+                        <i class="bi bi-hand-index-thumb"></i>Lámparas
+                    </button>
+                </li>
+                <li>
+                    <button id="macetas" class="boton-menu boton-categoria">
+                        <i class="bi bi-hand-index-thumb"></i>Macetas
+                    </button>
+                </li>
+                <li>
+                    <button id="relojes" class="boton-menu boton-categoria">
+                        <i class="bi bi-hand-index-thumb"></i>Relojes
+                    </button>
+                </li>
+                <li>
+                    <a class="boton-menu boton-carrito" href="/carrito">
+                        <i class="bi bi-cart-fill"></i>
+                        Carrito <span id="numerito" class="numerito">0</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="boton-menu boton-agregar" href="/productos/nuevo">
+                        <i class="bi bi-plus-circle"></i> Nuevo producto
+                    </a>
+                </li>
+
+
+            </ul>
+            <form action="/logout" method="post" style="display: inline;">
+                <button type="submit" class="boton-menu">
+                    <i class="bi bi-box-arrow-right"></i> Cerrar sesión
+                </button>
+            </form>
+
+
+        </nav>
+
+        <footer>
+            <p class="texto-footer">2025 Lámparas Coder</p>
+        </footer>
+    </aside>
+
+    <main>
+        <!-- 🔍 Filtros -->
+        <div class="filtro-busqueda">
+            <input type="text" id="busquedaNombre" placeholder="Buscar producto...">
+            <select id="busquedaCategoria">
+                <option value="todos">Todas las categorías</option>
+                <option value="lamparas">Lámparas</option>
+                <option value="macetas">Macetas</option>
+                <option value="relojes">Relojes</option>
+            </select>
+
+            <select id="ordenarProductos">
+                <option value="ninguno">Ordenar por...</option>
+                <option value="precioAsc">Precio: menor a mayor</option>
+                <option value="precioDesc">Precio: mayor a menor</option>
+                <option value="nombreAsc">Nombre: A - Z</option>
+                <option value="nombreDesc">Nombre: Z - A</option>
+            </select>
+
+            <input type="number" id="precioMin" placeholder="Precio mín" min="0">
+            <input type="number" id="precioMax" placeholder="Precio máx" min="0">
+            <button id="btnFiltrar">Filtrar</button>
+            <button id="btnLimpiar">Limpiar</button>
+        </div>
+
+        <!-- 🏷️ Título del catálogo -->
+        <h2 class="titulo-principal" id="titulo-principal">Todos los productos</h2>
+
+        <!-- 📦 Contenedor dinámico de productos -->
+        <div id="contenedor-productos" class="contenedor-productos">
+            <!-- Los productos se insertarán aquí con JS -->
+        </div>
+    </main>
+</div>
+
+<!-- 🔎 Ventana modal informativa (si la usas) -->
+<div class="overlay-info-ventana">
+    <div class="info-ventana">CONTENEDOR DE INFORMACIÓN</div>
+</div>
+
+<!-- 📜 Script JS dinámico -->
+<script src="/main.js"></script>
+
+</body>
+</html>

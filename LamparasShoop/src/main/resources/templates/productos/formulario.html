@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${producto.id == null ? 'Nuevo Producto' : 'Editar Producto'}"></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/main.css">
+</head>
+<body class="bg-light">
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4" th:text="${producto.id == null ? 'Agregar Producto' : 'Editar Producto'}"></h2>
+
+    <form th:action="@{/productos/guardar}" th:object="${producto}" method="post" enctype="multipart/form-data"
+          class="card p-4 shadow-lg">
+
+        <input type="hidden" th:field="*{id}">
+
+        <div class="mb-3">
+            <label class="form-label">Nombre:</label>
+            <input type="text" th:field="*{nombre}" class="form-control" placeholder="Ingrese Nombre Del Producto" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Precio:</label>
+            <input type="number" th:field="*{precio}" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Stock:</label>
+            <input type="number" th:field="*{stock}" placeholder="Ingrese Precio" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Imagen:</label>
+            <input type="file" name="imagenFile" class="form-control" accept="image/*">
+        </div>
+
+        <div th:if="${producto.imagenUrl != null}">
+            <p>Imagen actual:</p>
+            <img th:src="@{${producto.imagenUrl}}" alt="imagen producto" style="width: 120px; height: 120px; object-fit: cover;">
+
+        </div>
+
+        <div class="text-center mt-4">
+            <button type="submit" class="btn btn-primary me-2">Guardar</button>
+            <a href="/productos" class="btn btn-secondary">Cancelar</a>
+        </div>
+        <div class="acciones-formulario">
+
+            <a href="/productos/catalogo" class="btn-volver">
+                <i class="bi bi-arrow-left"></i> Volver al catálogo
+            </a>
+            <a href="/productos" class="btn-volver">
+                <i class= "bi bi-arrow-left"></i>Ver productos
+            </a>
+        </div>
+
+    </form>
+</div>
+
+</body>
+</html>
+
+
