@@ -32,6 +32,7 @@ public class AuthController {
     public String registrarUsuario(@ModelAttribute Usuario usuario) {
         usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
         usuarioRepository.save(usuario);
+
         return "redirect:/login?registered";
     }
 }
