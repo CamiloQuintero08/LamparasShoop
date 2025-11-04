@@ -166,6 +166,8 @@ main {
     padding: 2rem;
 }
 
+
+
 /* ========================= */
 /* Filtro de búsqueda        */
 /* ========================= */
@@ -542,4 +544,132 @@ main {
     background-color: var(--primary-color-dark);
     transform: scale(1.05);
 }
+
+
+/* ============================= */
+/* ESTILOS: NUEVO PRODUCTO       */
+/* ============================= */
+
+.product-container {
+    background-color: var(--background-color);
+    padding: 2.5rem 2rem;
+    border-radius: 1.25rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    width: 100%;
+    max-width: 520px;
+    margin: 4rem auto;
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.product-title {
+    color: var(--primary-color-dark);
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+/* Formulario */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: .4rem;
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    color: var(--primary-color-dark);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group input[type="file"] {
+    padding: .85rem;
+    border-radius: 0.75rem;
+    border: 1px solid #e6e6e6;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color .18s, box-shadow .18s;
+    background: transparent;
+}
+
+.form-group input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 6px rgba(117,172,146,0.06);
+}
+
+/* Botones */
+.btn-container {
+    display: flex;
+    justify-content: center;
+    gap: 0.9rem;
+    margin-top: 1.25rem;
+}
+
+.btn {
+    border: none;
+    border-radius: 0.85rem;
+    padding: 0.8rem 1.4rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform .14s ease, background .14s ease;
+}
+
+/* Botón principal verde (coherente con login) */
+.btn-guardar {
+    background: var(--primary-color);
+    color: var(--background-color);
+}
+
+.btn-guardar:hover {
+    background: var(--primary-color-dark);
+    transform: translateY(-2px);
+}
+
+/* Botón secundario gris */
+.btn-volver {
+    background: #6c757d;
+    color: #fff;
+}
+
+.btn-volver:hover {
+    background: #545454;
+    transform: translateY(-2px);
+}
+
+/* Mensajes */
+.form-message {
+    margin-top: 1rem;
+    color: var(--primary-color-dark);
+    text-align: center;
+    font-weight: 600;
+}
+
+.form-error {
+    margin-top: 1rem;
+    color: #b00020;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .product-container { margin: 2rem 1rem; padding: 1.75rem; }
+    .btn-container { flex-direction: column; gap: .6rem; }
+    .btn { width: 100%; }
+}
+
+
+
+
+
+
+
 
