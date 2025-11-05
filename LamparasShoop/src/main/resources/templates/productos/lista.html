@@ -26,6 +26,7 @@
         <tr>
             <th>ID</th>
             <th>Nombre</th>
+            <th>Categoria</th>
             <th>Precio</th>
             <th>Stock</th>
             <th>Imagen</th>
@@ -36,6 +37,7 @@
         <tr th:each="p : ${productos}">
             <td th:text="${p.id}"></td>
             <td th:text="${p.nombre}"></td>
+            <td th:text="${p.categoria}"></td>
             <td th:text="${p.precio}"></td>
             <td th:text="${p.stock}"></td>
             <td>
