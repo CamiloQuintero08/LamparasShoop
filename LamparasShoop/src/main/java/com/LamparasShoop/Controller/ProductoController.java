@@ -9,11 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
-import java.util.UUID;
 
 @Controller
 @RequestMapping("/productos")
@@ -21,8 +17,6 @@ public class ProductoController {
 
     @Autowired
     private ProductoRepository productoRepository;
-
-    private final String UPLOAD_DIR = "src/main/resources/static/img/";
 
     // 📋 LISTAR PRODUCTOS
     @GetMapping
@@ -40,22 +34,16 @@ public class ProductoController {
 
     @PostMapping("/guardar")
     public String guardar(@ModelAttribute Producto producto,
-                          @RequestParam("imagenFile") MultipartFile imagenFile) throws IOException {
+                          @RequestParam MultipartFile imagenFile) throws IOException {
 
         if (!imagenFile.isEmpty()) {
-            String nombreArchivo = UUID.randomUUID().toString() + "_" + imagenFile.getOriginalFilename();
-
-            Path directorioImagenes = Paths.get("src/main/resources/static/img/");
-            if (!Files.exists(directorioImagenes)) {
-                Files.createDirectories(directorioImagenes); // ✅ crea la carpeta si no existe
-            }
-
-            Path ruta = directorioImagenes.resolve(nombreArchivo);
-            Files.write(ruta, imagenFile.getBytes());
-
-            producto.setImagenUrl("/img/" + nombreArchivo);
+            producto.setImagen(imagenFile.getBytes());
         }
 
+        if (producto.getCategoria() == null) {
+            throw new RuntimeException("La categoria es requerida");
+        }
+        
         productoRepository.save(producto);
         return "redirect:/productos";
     }

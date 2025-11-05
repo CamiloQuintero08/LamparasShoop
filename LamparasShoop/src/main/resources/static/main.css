@@ -328,17 +328,6 @@ main {
     height: auto;
     object-fit: cover;
     opacity: 0;
-    animation: sliderAnim 9s infinite;
-}
-
-.contenedor-imagen img {
-    position: absolute;
-    width: auto;
-    height: auto;
-    object-fit: cover;
-    opacity: 0;
-    animation: sliderAnim 9s infinite;
-    transition: opacity 0.5s;
 }
 
 .contenedor-imagen img:nth-child(1) {
@@ -351,14 +340,6 @@ main {
 
 .contenedor-imagen img:nth-child(3) {
     animation-delay: 6s;
-}
-
-@keyframes sliderAnim {
-    0% { opacity: 0; }
-    5% { opacity: 1; }
-    30% { opacity: 1; }
-    35% { opacity: 0; }
-    100% { opacity: 0; }
 }
 
 .boton-info {
@@ -545,13 +526,51 @@ main {
     transform: scale(1.05);
 }
 
+.producto-detalle {
+    border: 1px solid #ddd;       
+    border-radius: 8px;           
+    padding: 16px;                
+    margin: 12px;                 
+    text-align: center;           
+    background-color: #fff;       
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+    transition: transform 0.2s, box-shadow 0.2s; 
+    width: 220px;                 
+    display: inline-block;        
+    vertical-align: top;
+}
 
+.producto-detalle img {
+    border-radius: 8px;
+    object-fit: cover;
+    margin-bottom: 12px;
+    width: 200px;
+    height: 200px;
+}
 
+.producto-detalle h3 {
+    font-size: 1.2rem;
+    margin: 8px 0;
+    color: #333;
+}
 
+.producto-detalle p {
+    font-size: 1rem;
+    color: #555;
+    margin: 4px 0 12px 0;
+}
 
+.producto-detalle .agregar-carrito {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: background-color 0.2s;
+}
 
-
-
-
-
-
+.producto-detalle .agregar-carrito:hover {
+    background-color: #218838;
+}

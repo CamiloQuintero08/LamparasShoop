@@ -39,9 +39,9 @@
             <td th:text="${p.precio}"></td>
             <td th:text="${p.stock}"></td>
             <td>
-                <img th:if="${p.imagenUrl != null}" th:src="${p.imagenUrl}" alt="img" width="80" height="80"
+                <img th:if="${p.imagen != null}" th:src="'data:image/png;base64,'+${p.imagen}" alt="img" width="80" height="80"
                      style="object-fit: cover;">
-                <span th:if="${p.imagenUrl == null}">Sin imagen</span>
+                <span th:if="${p.imagen == null}">Sin imagen</span>
             </td>
             <td>
                 <a th:href="@{'/productos/editar/' + ${p.id}}" class="btn btn-primary btn-sm">Editar</a>

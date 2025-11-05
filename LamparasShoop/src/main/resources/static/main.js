@@ -14,6 +14,7 @@ const inputPrecioMin = document.querySelector("#precioMin");
 const inputPrecioMax = document.querySelector("#precioMax");
 const btnFiltrar = document.querySelector("#btnFiltrar");
 const btnLimpiar = document.querySelector("#btnLimpiar");
+const botonesCategoterias = document.querySelectorAll('.boton-categoria');
 
 let botonesAgregar = document.querySelectorAll(".agregar-carrito");
 let numerito = document.querySelector("#numerito");
@@ -54,7 +55,7 @@ function mostrarProductos(lista) {
         div.classList.add("producto");
         div.innerHTML = `
             <div class="producto-detalle">
-                <img src="${prod.imagenUrl || '/img/default.jpg'}" alt="${prod.nombre}">
+                <img src="data:image/png;base64,${prod.imagen}" alt="${prod.nombre}" width="200px" height="200px">
                 <h3>${prod.nombre}</h3>
                 <p>$${prod.precio}</p>
                 <button class="agregar-carrito" data-id="${prod.id}">
@@ -143,6 +144,24 @@ function ordenarProductos() {
     }
 }
 
+botonesCategoterias.forEach(boton => {
+    boton.addEventListener('click', (e) => {
+        botonesCategoterias.forEach(boton => boton.classList.remove('active'));
+         e.currentTarget.classList.add('active');
+
+            if (e.currentTarget.id !== "todos") {
+                const productoCategoria = productos.find(producto => producto.categoria === e.currentTarget.id);
+                tituloPrincipal.innerText = productoCategoria.categoria;
+
+                const productosBoton = productos.filter(producto => producto.categoria === e.currentTarget.id);
+                mostrarProductos(productosBoton);
+            } else {
+                tituloPrincipal.innerText = "Todos los productos";
+                cargarProductos(productos);
+            }
+    })
+})
+
 function limpiarFiltros() {
     inputBusqueda.value = "";
     selectCategoria.value = "todos";
@@ -166,5 +185,3 @@ document.addEventListener("DOMContentLoaded", () => {
     cargarProductos();
     actualizarNumerito();
 });
-
-

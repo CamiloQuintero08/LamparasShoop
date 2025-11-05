@@ -1,9 +1,12 @@
 package com.LamparasShoop.Model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,9 +22,11 @@ public class Producto {
     private String nombre;
     private double precio;
     private int stock;
+    @Enumerated(EnumType.STRING)
+    private CategoriaEnum categoria;
 
-    // Aquí se guardará solo el nombre o ruta del archivo de imagen
-    private String imagenUrl;
+    @Lob
+    private byte[] imagen;
 
     public Producto() {
     }

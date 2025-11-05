@@ -23,6 +23,16 @@
         </div>
 
         <div class="mb-3">
+            <label class="form-label">Categoria:</label>
+            <select name="categoria" id="categoria-select">
+                <option value="">--Selecciona una categoria--</option>
+                <option value="LAMPARA">Lampara</option>
+                <option value="MACETA">Maceta</option>
+                <option value="RELOJ">Reloj</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
             <label class="form-label">Precio:</label>
             <input type="number" th:field="*{precio}" class="form-control" required>
         </div>
@@ -37,9 +47,9 @@
             <input type="file" name="imagenFile" class="form-control" accept="image/*">
         </div>
 
-        <div th:if="${producto.imagenUrl != null}">
+        <div th:if="${producto.imagen != null}">
             <p>Imagen actual:</p>
-            <img th:src="@{${producto.imagenUrl}}" alt="imagen producto" style="width: 120px; height: 120px; object-fit: cover;">
+            <img th:src="@{${producto.imagen}}" alt="imagen producto" style="width: 120px; height: 120px; object-fit: cover;">
 
         </div>
 
