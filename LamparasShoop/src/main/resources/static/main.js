@@ -114,7 +114,7 @@ function filtrarProductos() {
 
     productosFiltrados = productos.filter(p => {
         const coincideNombre = p.nombre.toLowerCase().includes(nombre);
-        const coincideCategoria = categoria === "todos" || p.categoria?.toLowerCase() === categoria;
+        const coincideCategoria = categoria === "todos" || p.categoria === categoria;
         const coincidePrecio = p.precio >= precioMin && p.precio <= precioMax;
         return coincideNombre && coincideCategoria && coincidePrecio;
     });
