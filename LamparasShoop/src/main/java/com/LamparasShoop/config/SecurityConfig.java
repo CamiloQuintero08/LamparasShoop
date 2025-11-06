@@ -19,7 +19,7 @@ public class SecurityConfig {
         http
                 // 🔒 Configuración de rutas públicas y protegidas
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/login", "/registro").permitAll()
+                        .requestMatchers("/login", "/registro", "/img/**").permitAll()
                         .requestMatchers("/productos/nuevo", "/productos/guardar", "/productos/editar/**", "/productos/eliminar/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
