@@ -19,9 +19,8 @@ public class SecurityConfig {
         http
                 // 🔒 Configuración de rutas públicas y protegidas
                 .authorizeHttpRequests(auth -> auth
-                        // Recursos públicos (sin login)
-                        .requestMatchers("/login", "/registro", "/css/**", "/js/**", "/img/**").permitAll()
-                        // Todo lo demás requiere autenticación
+                        .requestMatchers("/login", "/registro").permitAll()
+                        .requestMatchers("/productos/nuevo", "/productos/guardar", "/productos/editar/**", "/productos/eliminar/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
 

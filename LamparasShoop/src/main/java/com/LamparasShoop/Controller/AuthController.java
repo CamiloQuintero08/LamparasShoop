@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.LamparasShoop.Model.RoleEnum;
 import com.LamparasShoop.Model.Usuario;
 import com.LamparasShoop.Repository.UsuarioRepository;
 
@@ -32,6 +33,7 @@ public class AuthController {
     @PostMapping("/registro")
     public String registrarUsuario(@ModelAttribute Usuario usuario) {
         usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
+        usuario.setRole(RoleEnum.ROLE_USER);
         usuarioRepository.save(usuario);
 
         return "redirect:/login?registered";

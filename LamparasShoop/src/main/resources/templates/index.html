@@ -43,7 +43,7 @@
                         Carrito <span id="numerito" class="numerito">0</span>
                     </a>
                 </li>
-                <li>
+                <li sec:authorize="hasRole('ADMIN')">
                     <a class="boton-menu boton-agregar" href="/productos/nuevo">
                         <i class="bi bi-plus-circle"></i> Nuevo producto
                     </a>
