@@ -21,7 +21,8 @@
         }
 
         body.auth-body {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            background-color: var(--primary-color);
+            background-image: linear-gradient(135deg, rgba(117,172,146,0.95), rgba(184,236,225,0.8));
             height: 100vh;
             display: flex;
             justify-content: center;
@@ -69,13 +70,22 @@
             line-height: 1.6;
         }
 
+        /* Imagen mejor integrada */
         .auth-image {
             width: 100%;
-            max-width: 300px;
+            max-width: 320px;
             border-radius: 1rem;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            display: block;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+            border: 4px solid #dfe8e4;
+            background-color: #f8f8f8;
+            padding: 0.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             margin-top: 1rem;
+        }
+
+        .auth-image:hover {
+            transform: scale(1.04);
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.3);
         }
 
         form {
@@ -136,6 +146,7 @@
             .auth-container {
                 flex-direction: column;
                 text-align: center;
+                gap: 2rem;
             }
 
             .auth-info {
@@ -143,7 +154,7 @@
             }
 
             .auth-image {
-                max-width: 250px;
+                max-width: 260px;
             }
         }
     </style>
@@ -154,7 +165,7 @@
             <h2>Registro de Usuario</h2>
             <p>Crea una cuenta para acceder a todos nuestros servicios.<br>
             Completa tus datos y empieza a disfrutar de la plataforma.</p>
-            <img src="/img/Registro.png" alt="Registro" class="auth-image">
+            <img src="/img/Artesanal.png" alt="Registro" class="auth-image">
         </div>
 
         <form action="/registro" method="post">
@@ -171,3 +182,4 @@
     </div>
 </body>
 </html>
+
