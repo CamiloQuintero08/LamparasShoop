@@ -58,9 +58,14 @@ function mostrarProductos(lista) {
                 <img src="data:image/png;base64,${prod.imagen}" alt="${prod.nombre}" width="200px" height="200px">
                 <h3>${prod.nombre}</h3>
                 <p>$${prod.precio}</p>
-                <button class="agregar-carrito" data-id="${prod.id}">
-                    <i class="bi bi-cart-plus"></i> Agregar al carrito
-                </button>
+                <div class="producto-botones">
+                    <button class="mas-info" data-id="${prod.id}">
+                        <i class="bi bi-info-circle"></i> Más información
+                    </button>
+                    <button class="agregar-carrito" data-id="${prod.id}">
+                        <i class="bi bi-cart-plus"></i>
+                    </button>
+                </div>
             </div>
         `;
         contenedorProductos.appendChild(div);

@@ -1,12 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
 
 :root {
-    --primary-color: #75ac92;
-    /*opciones color principal: #80ac75; 173638; fac28d;*/
-    --primary-color-dark: #111242;
-    /*opciones color texto: #51b3ae; df6c00; 0d5507*/
-    --secondary-color: #b8ece1;
-    /*opciones color secundario: c8f3ca; */
+    --primary-color: #D4A373;
+    --primary-color-dark: #ADC178;
+    --primary-color-dark-hover: #9BB06B;
+    --secondary-color: #FAEDCD ;
     --background-color: #ffffff;
     --text-color: #ffd903;
 }
@@ -54,6 +52,12 @@ aside {
 
 }
 
+nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10rem;
+}
+
 .logo {
     font-weight: 700;
     font-size: 1.5rem;
@@ -68,7 +72,7 @@ aside {
     }
     50% {
         transform: translateY(-10px);
-        color: #111242;
+        color: var(--primary-color-dark);
     }
     100% {
         transform: translateY(0);
@@ -137,8 +141,16 @@ aside {
 
 
 .boton-carrito {
+    padding: 10px 16px;
+    border-radius: 10px;
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
     margin-top: 2rem;
-    color: var( --primary-color-dark);
+    background: var(--primary-color-dark);
+    color: #fff;
 }
 
 .numerito {
@@ -181,7 +193,7 @@ main {
     gap: 12px;
     justify-content: center;
     align-items: center;
-    background: #75ac92;
+    background: var(--primary-color);
     padding: 18px 22px;
     border-radius: 12px;
     margin-bottom: 25px;
@@ -203,7 +215,7 @@ main {
 
 .filtro-busqueda input:focus,
 .filtro-busqueda select:focus {
-    border-color: #111242;
+    border-color: var(--primary-color-dark);
     box-shadow: 0 0 6px rgba(0, 123, 255, 0.2);
 }
 
@@ -218,21 +230,21 @@ main {
 }
 
 .filtro-busqueda #btnFiltrar {
-    background: #111242;
+    background: var(--primary-color-dark);
     color: #fff;
 }
 
 .filtro-busqueda #btnFiltrar:hover {
-    background: #0056b3;
+    background: var(--primary-color-dark-hover);
 }
 
 .filtro-busqueda #btnLimpiar {
-    background: #111242;
+    background: var(--primary-color-dark);
     color: #fff;
 }
 
 .filtro-busqueda #btnLimpiar:hover {
-    background: #0056b3;
+    background: var(--primary-color-dark-hover);
 }
 
 .filtro-busqueda select#ordenarProductos {
@@ -251,8 +263,6 @@ main {
         width: 100%;
     }
 }
-
-
 
 .titulo-principal {
     color: var(--primary-color-dark);
@@ -529,7 +539,7 @@ main {
 .producto-detalle {
     border: 1px solid #ddd;       
     border-radius: 8px;           
-    padding: 16px;                
+    padding: 16px 0;                
     margin: 12px;                 
     text-align: center;           
     background-color: #fff;       
@@ -573,4 +583,25 @@ main {
 
 .producto-detalle .agregar-carrito:hover {
     background-color: #218838;
+}
+
+.producto-botones {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.mas-info {
+    background-color: var(--primary-color-dark);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: background-color 0.2s;
+}
+
+.mas-info:hover {
+    background-color: var(--primary-color-dark-hover);
 }
