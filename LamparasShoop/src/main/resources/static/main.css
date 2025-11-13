@@ -68,7 +68,7 @@ nav {
 @keyframes animartitulo {
     0% {
         transform: translateY(0);
-        color: #000;
+        color: #18331e;
     }
     50% {
         transform: translateY(-10px);
@@ -76,7 +76,7 @@ nav {
     }
     100% {
         transform: translateY(0);
-        color: #000;
+        color: #18331e;
     }
 }
 
@@ -166,7 +166,7 @@ nav {
 }
 
 .texto-footer {
-    color: var(--primary-color-dark);
+    color: var(--primary-color-dark-hover);
     font-size: .85rem;
 }
 
@@ -179,14 +179,6 @@ main {
 }
 
 
-
-/* ========================= */
-/* Filtro de búsqueda        */
-/* ========================= */
-
-/* ========================= */
-/* Filtro de búsqueda bonito */
-/* ========================= */
 .filtro-busqueda {
     display: flex;
     flex-wrap: wrap;
@@ -251,7 +243,6 @@ main {
     min-width: 180px;
 }
 
-/* Responsive para móviles */
 @media (max-width: 768px) {
     .filtro-busqueda {
         flex-direction: column;
@@ -393,7 +384,6 @@ main {
     border: none;
 }
 
-/** CARRITO **/
 
 .contenedor-carrito {
     display: flex;
