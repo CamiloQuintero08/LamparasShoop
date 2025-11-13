@@ -618,8 +618,8 @@ main {
 }
 
 .modal-contenido {
-    background-color: #fff;
-    margin: 10% auto;
+    background-color: var(--secondary-color);
+    margin: 5% auto;
     padding: 20px;
     border-radius: 12px;
     width: 90%;
@@ -627,6 +627,7 @@ main {
     text-align: center;
     position: relative;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    color: var(--primary-color-dark);
 }
 
 .cerrar-modal {
@@ -635,80 +636,122 @@ main {
     right: 15px;
     font-size: 24px;
     cursor: pointer;
+    color: var(--primary-color-dark);
 }
 
-.modal-contenido img {
-    border-radius: 10px;
-    margin-bottom: 15px;
+.modal-contenido {
+    background-color: var(--secondary-color);
+    margin: 3% auto;              /* Más centrado verticalmente */
+    padding: 25px;
+    border-radius: 14px;
+    width: 95%;                   /* Más ancho en pantallas pequeñas */
+    max-width: 700px;             /* Más ancho en pantallas grandes */
+    text-align: center;
+    position: relative;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    color: var(--primary-color-dark);
+    border: 2px solid var(--primary-color); /* Toque artesanal */
 }
 
 .reseñas-container {
     text-align: left;
-    margin-top: 10px;
-    max-height: 200px;
+    margin-top: 15px;
+    max-height: 220px;            /* Un poco más alto para reseñas */
     overflow-y: auto;
-    padding-right: 10px;
+    padding: 12px;
+    background-color: var(--background-color);
+    border: 1px solid var(--primary-color-dark);
+    border-radius: 10px;
 }
 
 .reseña {
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid var(--primary-color-dark);
     padding: 8px 0;
 }
 
 .reseña strong {
-    color: #333;
+    color: var(--primary-color);
 }
 
 .reseña small {
-    color: #777;
+    color: var(--primary-color-dark);
     font-size: 0.8em;
 }
 
 .reseña p {
     margin: 4px 0 0;
+    color: var(--primary-color-dark);
 }
 
 .form-reseña {
     display: flex;
     flex-direction: column;
     gap: 8px;
-    margin-top: 10px;
+    margin-top: 12px;
 }
 
 .form-reseña input,
 .form-reseña textarea {
     width: 100%;
     padding: 8px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--primary-color-dark);
     border-radius: 6px;
+    background-color: var(--secondary-color);
+    color: var(--primary-color-dark);
 }
 
 .reseña-estrellas {
     display: flex;
     align-items: center;
     gap: 8px;
+    color: var(--primary-color);
 }
 
 #estrellas span {
     font-size: 20px;
     cursor: pointer;
     transition: transform 0.2s;
+    color: var(--primary-color);
 }
 
 #estrellas span:hover {
     transform: scale(1.2);
+    color: var(--primary-color-dark-hover);
 }
 
 #btnEnviarReseña {
-    background-color: #007bff;
-    color: white;
-    padding: 8px 12px;
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    padding: 12px 18px;
     border: none;
-    border-radius: 8px;
+    border-radius: 10px;
     cursor: pointer;
+    font-weight: bold;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
 }
 
 #btnEnviarReseña:hover {
-    background-color: #0056b3;
+    background-color: var(--primary-color-dark-hover);
 }
+
+
+#modal-agregar-carrito{
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    padding: 12px 18px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+
+}
+
+#modal-agregar-carrito:hover {
+    background-color:  var(--primary-color-dark-hover);
+}
+
+
 
