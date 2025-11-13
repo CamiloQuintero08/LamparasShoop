@@ -609,7 +609,6 @@ main {
     padding: 20px;
 }
 
-/* Modal centrado correctamente */
 .modal-contenido {
     background-color: var(--secondary-color);
     color: var(--primary-color-dark-hover);
@@ -644,7 +643,6 @@ main {
     color: var(--primary-color-dark-hover);
 }
 
-/* Imagen */
 #modal-imagen {
     width: 240px;
     height: auto;
@@ -654,37 +652,35 @@ main {
     margin-bottom: 12px;
 }
 
-/* Títulos */
 .modal-contenido h3,
 .modal-contenido p {
     margin: 6px 0;
     text-align: center;
 }
 
-/* --- Reseñas --- */
 .reseñas-container {
     text-align: left;
     margin-top: 25px;
-    max-height: 320px; /* antes 260px */
+    max-height: 400px; 
     width: 100%;
     overflow-y: auto;
-    padding: 20px; /* más aire interno */
+    padding: 90px; 
     background-color: #f9f9f5;
-    border-radius: 14px;
+    border-radius: 12px;
+    margin-bottom: 20px;
     border: 1px solid #ddd;
     box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.06);
 }
 
-/* Cada reseña en formato "tarjeta" */
 .reseña {
     background-color: white;
     border: 1px solid rgba(0, 0, 0, 0.06);
     border-radius: 12px;
-    padding: 14px 18px; /* más espacio interno */
+    padding: 14px 18px; 
     margin-bottom: 14px;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
-    font-size: 1rem; /* más grande el texto */
-    line-height: 1.5; /* mejora lectura */
+    font-size: 1rem; 
+    line-height: 1.5; 
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 .reseña:hover {
@@ -708,7 +704,6 @@ main {
     color: var(--text-color-dark);
 }
 
-/* --- Formulario de reseña --- */
 .form-reseña {
     display: flex;
     flex-direction: column;
@@ -729,7 +724,6 @@ main {
     font-size: 0.95rem;
 }
 
-/* Estrellas */
 .reseña-estrellas {
     display: flex;
     align-items: center;
@@ -747,7 +741,6 @@ main {
     transform: scale(1.3);
 }
 
-/* Botones */
 #btnEnviarReseña, 
 #modal-agregar-carrito {
     background-color: var(--primary-color);
@@ -769,7 +762,6 @@ main {
     transform: translateY(-2px);
 }
 
-/* Responsivo */
 @media (max-width: 768px) {
     .modal-contenido {
         width: 95%;
