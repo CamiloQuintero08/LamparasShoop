@@ -132,7 +132,7 @@
         <h4 th:text="${usuario != null && usuario.username != null ? 'Hola ' + usuario.username + ', deja tu reseña' : 'Deja tu reseña'}"></h4>
         <form id="formReseña" class="form-reseña">
             <input type="hidden" id="reseña-nombre" th:value="${usuario != null ? usuario.username : ''}">
-            <textarea id="reseña-comentario" placeholder="Escribe tu reseña..." required></textarea>
+            <textarea id="reseña-comentario" placeholder="Escribe tu reseña..." required rows="3" cols="80"></textarea>
             <div class="reseña-estrellas">
                 <label>Puntuación:</label>
                 <div id="estrellas">
@@ -143,14 +143,13 @@
                     <span data-value="5">⭐</span>
                 </div>
             </div>
-            <button type="submit" id="btnEnviarReseña">Enviar reseña</button>
+            <button type="submit" id="btnEnviarReseña">
+                <i class="bi bi-send-plus"></i> Enviar reseña
+            </button>
+            <button id="modal-agregar-carrito" type="button" class="agregar-carrito">
+                <i class="bi bi-cart-plus"></i> Agregar al carrito
+            </button>
         </form>
-
-        <hr>
-
-        <button id="modal-agregar-carrito" class="agregar-carrito">
-            <i class="bi bi-cart-plus"></i> Agregar al carrito
-        </button>
     </div>
 </div>
 </html>
