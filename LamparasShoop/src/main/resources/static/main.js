@@ -246,7 +246,7 @@ async function mostrarModal(producto) {
 
 async function cargarReseñas(idProducto, contenedor) {
     try {
-        const resp = await fetch(`/api/resenas/${idProducto}`);
+        const resp = await fetch(`/api/resenas/producto/${idProducto}`);
         if (!resp.ok) throw new Error("Error al obtener reseñas");
         const reseñas = await resp.json();
 

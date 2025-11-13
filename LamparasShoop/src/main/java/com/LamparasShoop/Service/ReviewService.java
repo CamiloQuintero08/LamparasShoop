@@ -1,6 +1,7 @@
 package com.LamparasShoop.Service;
 
 import com.LamparasShoop.Model.Review;
+import com.LamparasShoop.Controller.ReviewDTO;
 import com.LamparasShoop.Model.Producto;
 import com.LamparasShoop.Model.Usuario;
 import com.LamparasShoop.Repository.ReviewRepository;
@@ -13,7 +14,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -43,44 +43,14 @@ public class ReviewService {
     }
     
     @Transactional(readOnly = true)
-    public List<Review> obtenerResenasDelProducto(Long productoId) {
-        return reviewRepository.findByProductoId(productoId);
+    public List<ReviewDTO> obtenerResenasDelProducto(Long productoId) {
+        return reviewRepository.findByProductoId(productoId)
+                .stream()
+                .map(this::toReviewReq)
+                .toList();
     }
     
     @Transactional(readOnly = true)
-    public List<Review> obtenerResenasDelUsuario(Long usuarioId) {
-        return reviewRepository.findByUsuarioId(usuarioId);
-    }
-    
-    @Transactional(readOnly = true)
-    public Optional<Review> obtenerResena(Long id) {
-        return reviewRepository.findById(id);
-    }
-    
-    @Transactional
-    public Review actualizarResena(Long id, Integer calificacion, String comentario) {
-        Optional<Review> review = reviewRepository.findById(id);
-        
-        if (review.isEmpty()) {
-            throw new IllegalArgumentException("Reseña no encontrada");
-        }
-        
-        if (calificacion < 1 || calificacion > 5) {
-            throw new IllegalArgumentException("La calificación debe estar entre 1 y 5");
-        }
-        
-        Review resenaActualizar = review.get();
-        resenaActualizar.setCalificacion(calificacion);
-        resenaActualizar.setComentario(comentario);
-        
-        return reviewRepository.save(resenaActualizar);
-    }
-
-    @Transactional
-    public void eliminarResena(Long id) {
-        reviewRepository.deleteById(id);
-    }
-    
     public Double obtenerCalificacionPromedio(Long productoId) {
         List<Review> resenas = reviewRepository.findByProductoId(productoId);
         if (resenas.isEmpty()) {
@@ -90,5 +60,14 @@ public class ReviewService {
                 .mapToInt(Review::getCalificacion)
                 .average()
                 .orElse(0.0);
+    }
+
+    private ReviewDTO toReviewReq(Review review) {
+        ReviewDTO reviewReq = new ReviewDTO();
+        reviewReq.setUsuario(review.getUsuario().getUsername());
+        reviewReq.setComentario(review.getComentario());
+        reviewReq.setFecha(review.getFechaCreacion());
+        reviewReq.setPuntuacion(review.getCalificacion());
+        return reviewReq;
     }
 }
