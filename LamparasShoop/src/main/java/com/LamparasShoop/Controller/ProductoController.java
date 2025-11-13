@@ -3,6 +3,7 @@ package com.LamparasShoop.Controller;
 import com.LamparasShoop.Model.Producto;
 import com.LamparasShoop.Model.Usuario;
 import com.LamparasShoop.Repository.ProductoRepository;
+import com.LamparasShoop.Repository.ReviewRepository;
 import com.LamparasShoop.Repository.UsuarioRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -11,6 +12,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -24,6 +26,7 @@ import java.util.List;
 public class ProductoController {
 
     private final ProductoRepository productoRepository;
+    private final ReviewRepository reviewRepository;
     private final UsuarioRepository usuarioRepository;
 
     // 📋 LISTAR PRODUCTOS
@@ -67,12 +70,15 @@ public class ProductoController {
     }
 
     // 🗑️ ELIMINAR PRODUCTO
+    @Transactional
     @GetMapping("/eliminar/{id}")
     public String eliminar(@PathVariable Long id) {
-        productoRepository.deleteById(id);
+        Producto producto = productoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Producto no encontrado"));
+        reviewRepository.deleteAllByProducto(producto);
+        productoRepository.delete(producto);
         return "redirect:/productos";
     }
-
 
     // 🏠 MOSTRAR PRODUCTOS EN EL INDEX
     @GetMapping("/catalogo")
