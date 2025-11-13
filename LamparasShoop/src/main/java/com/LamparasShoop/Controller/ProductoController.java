@@ -1,8 +1,15 @@
 package com.LamparasShoop.Controller;
 
 import com.LamparasShoop.Model.Producto;
+import com.LamparasShoop.Model.Usuario;
 import com.LamparasShoop.Repository.ProductoRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.LamparasShoop.Repository.UsuarioRepository;
+
+import lombok.RequiredArgsConstructor;
+
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -13,10 +20,11 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/productos")
+@RequiredArgsConstructor
 public class ProductoController {
 
-    @Autowired
-    private ProductoRepository productoRepository;
+    private final ProductoRepository productoRepository;
+    private final UsuarioRepository usuarioRepository;
 
     // 📋 LISTAR PRODUCTOS
     @GetMapping
@@ -69,6 +77,15 @@ public class ProductoController {
     // 🏠 MOSTRAR PRODUCTOS EN EL INDEX
     @GetMapping("/catalogo")
     public String catalogo(Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null && auth.isAuthenticated()) {
+            String username = auth.getName();
+            Usuario usuario = usuarioRepository.findByUsername(username)
+                    .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado: " + username));
+            model.addAttribute("usuario", usuario);
+        } else {
+            model.addAttribute("usuario", null);
+        }
         model.addAttribute("productos", productoRepository.findAll());
         return "index"; // tu vista principal
     }

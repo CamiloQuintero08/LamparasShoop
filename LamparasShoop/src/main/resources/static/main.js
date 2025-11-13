@@ -69,6 +69,7 @@ function mostrarProductos(lista) {
             </div>
         `;
         contenedorProductos.appendChild(div);
+        actualizarBotonesInfo();
     });
 
     actualizarBotonesAgregar();
@@ -190,3 +191,142 @@ document.addEventListener("DOMContentLoaded", () => {
     cargarProductos();
     actualizarNumerito();
 });
+
+let puntuacionSeleccionada = 0;
+
+async function mostrarModal(producto) {
+    const modal = document.querySelector("#modalProducto");
+    const modalImg = document.querySelector("#modal-imagen");
+    const modalNombre = document.querySelector("#modal-nombre");
+    const modalDescripcion = document.querySelector("#modal-descripcion");
+    const modalPrecio = document.querySelector("#modal-precio");
+    const modalCategoria = document.querySelector("#modal-categoria");
+    const modalReseñas = document.querySelector("#modal-reseñas");
+    const btnAgregarModal = document.querySelector("#modal-agregar-carrito");
+    const formReseña = document.querySelector("#formReseña");
+
+    // Llenar info básica
+    modalImg.src = `data:image/png;base64,${producto.imagen}`;
+    modalNombre.textContent = producto.nombre;
+    modalDescripcion.textContent = producto.descripcion || "Sin descripción disponible.";
+    modalPrecio.textContent = producto.precio;
+    modalCategoria.textContent = producto.categoria;
+
+    // Resetear puntuación y formulario
+    puntuacionSeleccionada = 0;
+    formReseña.reset();
+
+    // Cargar reseñas
+    modalReseñas.innerHTML = `<p>Cargando reseñas...</p>`;
+    await cargarReseñas(producto.id, modalReseñas);
+
+    // Mostrar modal
+    modal.style.display = "block";
+    btnAgregarModal.dataset.id = producto.id;
+    formReseña.dataset.id = producto.id;
+
+    // Cerrar modal
+    const cerrar = document.querySelector(".cerrar-modal");
+    cerrar.onclick = () => modal.style.display = "none";
+    window.onclick = (e) => { if (e.target === modal) modal.style.display = "none"; };
+
+    // Inicializar estrellas interactivas
+    inicializarEstrellas();
+
+    // Evento para enviar reseña
+    formReseña.onsubmit = async (e) => {
+        e.preventDefault();
+        await enviarReseña(producto.id);
+        await cargarReseñas(producto.id, modalReseñas);
+        formReseña.reset();
+        puntuacionSeleccionada = 0;
+        resaltarEstrellas(0);
+    };
+}
+
+async function cargarReseñas(idProducto, contenedor) {
+    try {
+        const resp = await fetch(`/api/resenas/${idProducto}`);
+        if (!resp.ok) throw new Error("Error al obtener reseñas");
+        const reseñas = await resp.json();
+
+        if (reseñas.length === 0) {
+            contenedor.innerHTML = `<p>No hay reseñas para este producto aún.</p>`;
+        } else {
+            contenedor.innerHTML = "";
+            reseñas.forEach(r => {
+                const div = document.createElement("div");
+                div.classList.add("reseña");
+                div.innerHTML = `
+                    <strong>${r.usuario}</strong> 
+                    <small>(${r.fecha})</small><br>
+                    <span>${"⭐".repeat(r.puntuacion)}</span>
+                    <p>${r.comentario}</p>
+                `;
+                contenedor.appendChild(div);
+            });
+        }
+    } catch (error) {
+        contenedor.innerHTML = `<p>Error al cargar reseñas.</p>`;
+        console.error(error);
+    }
+}
+
+function inicializarEstrellas() {
+    const estrellas = document.querySelectorAll("#estrellas span");
+    estrellas.forEach(est => {
+        est.addEventListener("click", () => {
+            puntuacionSeleccionada = parseInt(est.dataset.value);
+            resaltarEstrellas(puntuacionSeleccionada);
+        });
+    });
+}
+
+function resaltarEstrellas(valor) {
+    const estrellas = document.querySelectorAll("#estrellas span");
+    estrellas.forEach(est => {
+        est.style.color = parseInt(est.dataset.value) <= valor ? "gold" : "gray";
+    });
+}
+
+async function enviarReseña(idProducto) {
+    const nombre = document.querySelector("#reseña-nombre").value.trim();
+    console.log(nombre);
+    const comentario = document.querySelector("#reseña-comentario").value.trim();
+
+    if (!nombre || !comentario || puntuacionSeleccionada === 0) {
+        alert("Por favor completa todos los campos y selecciona una puntuación.");
+        return;
+    }
+
+    try {
+        const respuesta = await fetch(`/api/resenas/${idProducto}`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                usuario: nombre,
+                comentario,
+                puntuacion: puntuacionSeleccionada,
+                fecha: new Date().toISOString().split("T")[0]
+            })
+        });
+        console.log(respuesta);
+        if (!respuesta.ok) throw new Error("Error al enviar reseña");
+        alert("✅ Reseña enviada correctamente.");
+    } catch (error) {
+        console.error("Error:", error);
+        alert("❌ No se pudo enviar la reseña.");
+    }
+}
+
+function actualizarBotonesInfo() {
+    const botonesInfo = document.querySelectorAll(".mas-info");
+
+    botonesInfo.forEach(boton => {
+        boton.addEventListener("click", (e) => {
+            const idProducto = e.currentTarget.dataset.id;
+            const producto = productos.find(p => p.id == idProducto);
+            if (producto) mostrarModal(producto);
+        });
+    });
+}

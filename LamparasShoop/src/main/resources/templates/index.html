@@ -109,4 +109,50 @@
 <script src="/main.js"></script>
 
 </body>
+<!-- =============================== -->
+<!-- MODAL DE INFORMACIÓN DEL PRODUCTO -->
+<!-- =============================== -->
+<div id="modalProducto" class="modal">
+    <div class="modal-contenido">
+        <span class="cerrar-modal">&times;</span>
+
+        <img id="modal-imagen" src="" alt="Producto" width="200">
+        <h2 id="modal-nombre"></h2>
+        <p id="modal-descripcion"></p>
+        <p><strong>Precio:</strong> $<span id="modal-precio"></span></p>
+        <p><strong>Categoría:</strong> <span id="modal-categoria"></span></p>
+
+        <hr>
+
+        <h3>Reseñas</h3>
+        <div id="modal-reseñas" class="reseñas-container">
+            <p>Cargando reseñas...</p>
+        </div>
+
+        <hr>
+
+        <h4 th:text="${usuario != null && usuario.username != null ? 'Hola ' + usuario.username + ', deja tu reseña' : 'Deja tu reseña'}"></h4>
+        <form id="formReseña" class="form-reseña">
+            <input type="hidden" id="reseña-nombre" th:value="${usuario != null ? usuario.username : ''}">
+            <textarea id="reseña-comentario" placeholder="Escribe tu reseña..." required></textarea>
+            <div class="reseña-estrellas">
+                <label>Puntuación:</label>
+                <div id="estrellas">
+                    <span data-value="1">⭐</span>
+                    <span data-value="2">⭐</span>
+                    <span data-value="3">⭐</span>
+                    <span data-value="4">⭐</span>
+                    <span data-value="5">⭐</span>
+                </div>
+            </div>
+            <button type="submit" id="btnEnviarReseña">Enviar reseña</button>
+        </form>
+
+        <hr>
+
+        <button id="modal-agregar-carrito" class="agregar-carrito">
+            <i class="bi bi-cart-plus"></i> Agregar al carrito
+        </button>
+    </div>
+</div>
 </html>
