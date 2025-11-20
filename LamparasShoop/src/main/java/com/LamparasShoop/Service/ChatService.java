@@ -21,6 +21,19 @@ public class ChatService {
         if (mensaje.contains("hola") || mensaje.contains("buenos")) {
             return "¡Hola! Bienvenido a Aura Artesanal. Soy tu asistente virtual. ¿Te gustaría ver lámparas, macetas o relojes?";
         } 
+        else if (mensaje.contains("gracias") || mensaje.contains("adiós")) {
+            return "¡Gracias por visitar Aura Artesanal! Si necesitas algo más, no dudes en volver.";
+        }
+        else if (mensaje.contains("proyecto") || mensaje.contains("aura artesanal")) {
+            return "Aura Artesanal es un proyecto dedicado a ofrecer productos hechos a mano con amor y dedicación. ¡Gracias por tu interés!";
+        }
+        else if (mensaje.contains("ver productos") || mensaje.contains("productos")) {
+            respuesta.append("Claro, aquí tienes algunas de nuestras categorías populares:\n");
+            respuesta.append("• Lámparas\n");
+            respuesta.append("• Macetas\n");
+            respuesta.append("• Relojes\n");
+            respuesta.append("¿Cuál te gustaría explorar?");
+        }
         else if (mensaje.contains("lampara")) {
             respuesta.append("Aquí tienes nuestras lámparas artesanales:\n");
             appendProductos(respuesta, "LAMPARA");
