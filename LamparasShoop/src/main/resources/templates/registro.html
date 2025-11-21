@@ -3,14 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Registro</title>
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
 
         :root {
-            --primary-color: #D4A373;
-            --primary-color-dark: #ADC178;
-            --secondary-color: #b8ece1;
-            --background-color: #ffffff;
+            --primary-color: #556B2F;
+            --primary-color-dark: #3E4A2F;
+            --primary-color-dark-hover: #2E381F;
+            --contrast-color: #E1D8C5;
+            --contrast-light-color: #92817A;
+            --contrast-color-hover: #362417;
+            --secondary-color: #F5F1E8;
+            --secondary-color-hover: #BCD8C1;
+            --text-color: #4A3B26;
+            --text-color-dark: #3B2E1E;
+            --text-color-white: #FFFCF6;
         }
 
         * {
@@ -21,27 +29,28 @@
         }
 
         body.auth-body {
-            background-color: var(--primary-color);
-            background-image: linear-gradient(135deg, var(--primary-color)), var(--primary-color-dark);
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-color-dark));
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-        }
+}
+
 
         .auth-container {
-            background: var(--background-color);
+            background: var(--secondary-color);
             display: flex;
             flex-direction: row;
             align-items: center;
             justify-content: space-between;
             padding: 3rem;
             border-radius: 1.5rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
             width: 90%;
             max-width: 950px;
-            animation: fadeIn 0.8s ease-in-out;
             gap: 3rem;
+            border: 2px solid var(--contrast-color);
+            animation: fadeIn 0.8s ease-in-out;
         }
 
         @keyframes fadeIn {
@@ -53,39 +62,34 @@
             flex: 1;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: flex-start;
             gap: 1rem;
         }
 
         .auth-info h2 {
-            color: var(--primary-color-dark);
+            color: var(--text-color-dark);
             font-size: 2rem;
             font-weight: 700;
         }
 
         .auth-info p {
-            color: #555;
-            font-size: 1rem;
+            color: var(--text-color);
             line-height: 1.6;
         }
 
-        /* Imagen mejor integrada */
         .auth-image {
             width: 100%;
             max-width: 320px;
             border-radius: 1rem;
+            border: 4px solid var(--contrast-color);
             box-shadow: 0 8px 25px rgba(0,0,0,0.25);
-            border: 4px solid #dfe8e4;
-            background-color: #f8f8f8;
             padding: 0.5rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            margin-top: 1rem;
+            background-color: var(--secondary-color-hover);
+            transition: .3s ease;
         }
 
         .auth-image:hover {
-            transform: scale(1.04);
-            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.3);
+            transform: scale(1.03);
         }
 
         form {
@@ -97,11 +101,12 @@
 
         input {
             padding: 0.8rem;
-            border: 1px solid #ddd;
+            border: 1px solid var(--contrast-light-color);
             border-radius: 0.8rem;
-            font-size: 1rem;
+            background-color: var(--secondary-color-hover);
+            color: var(--text-color-dark);
             outline: none;
-            transition: border-color 0.3s;
+            transition: .3s;
         }
 
         input:focus {
@@ -110,36 +115,36 @@
 
         .auth-btn {
             background: var(--primary-color);
-            color: var(--background-color);
+            color: var(--text-color-white);
             border: none;
             padding: 0.9rem;
             border-radius: 0.8rem;
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: background 0.3s, transform 0.2s;
+            transition: .3s;
         }
 
         .auth-btn:hover {
-            background: var(--primary-color-dark);
+            background: var(--primary-color-dark-hover);
             transform: scale(1.03);
         }
 
         .auth-text {
             margin-top: 1rem;
-            color: #444;
-            font-size: 0.9rem;
+            color: var(--text-color);
             text-align: center;
+            font-size: .9rem;
         }
 
         .auth-text a {
             color: var(--primary-color-dark);
-            font-weight: 600;
+            font-weight: 700;
             text-decoration: none;
         }
 
         .auth-text a:hover {
-            text-decoration: underline;
+            color: var(--primary-color-dark-hover);
         }
 
         @media (max-width: 900px) {
@@ -151,20 +156,24 @@
 
             .auth-info {
                 align-items: center;
+                text-align: center;
             }
 
             .auth-image {
                 max-width: 260px;
             }
         }
+
     </style>
 </head>
+
 <body class="auth-body">
     <div class="auth-container">
+
         <div class="auth-info">
             <h2>Registro de Usuario</h2>
-            <p>Crea una cuenta para acceder a todos nuestros servicios.<br>
-            Completa tus datos y empieza a disfrutar de la plataforma.</p>
+            <p>Crea una cuenta para disfrutar de nuestros productos artesanales y acceder a todas las funciones.</p>
+
             <img src="/img/ImagenRegistro.png" alt="Registro" class="auth-image">
         </div>
 
@@ -176,10 +185,11 @@
             <input type="email" name="email" placeholder="Correo Electrónico" required>
             <input type="number" name="phone" placeholder="Teléfono" required>
             <input type="date" name="dateOfBirth" required>
+
             <button type="submit" class="auth-btn">Registrarse</button>
+
             <p class="auth-text">¿Ya tienes una cuenta? <a href="/login">Inicia sesión</a></p>
         </form>
     </div>
 </body>
 </html>
-

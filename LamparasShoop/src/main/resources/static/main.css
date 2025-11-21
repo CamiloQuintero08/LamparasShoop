@@ -1,14 +1,44 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
 
 :root {
-    --primary-color: #D4A373;
-    --primary-color-dark: #ADC178;
-    --primary-color-dark-hover: #9BB06B;
-    --secondary-color: #F5F5F5 ;
-    --background-color: #ffffff;
-    --text-color: #4B463E;
-    --text-color-dark: #3A3A3A;
-    --text-color-white: #FFFDF8;
+    --primary-color: #556B2F;
+    --primary-color-dark: #3E4A2F;
+    --primary-color-dark-hover: #2E381F;
+    --contrast-color: #E1D8C5;
+    --contrast-light-color: #92817A;
+    --contrast-color-hover: #362417;
+    --secondary-color: #F5F1E8;
+    --secondary-color-hover: #BCD8C1;
+    --text-color: #4A3B26;
+    --text-color-dark: #3B2E1E;
+    --text-color-white: #FFFCF6;
+
+    /*opciones paleta colores 
+    opcion uno azul oscuro: 
+     --primary-color: #0D1821;
+    --primary-color-dark: #344966;
+    --primary-color-dark-hover: #B4CDED ;
+    --contrast-color: #BFCC94;
+    --secondary-color: #F0F4EF ;
+    
+  ------------------------------------- 
+  segunda opcion azul claro: 
+    --primary-color: #119DA4;
+    --primary-color-dark: #6D9DC5;
+    --primary-color-dark-hover: #80DED9;
+    --contrast-color: #3066BE;
+    --secondary-color: #AEECEF;
+
+    ------------------------------------
+    tercera opcion verde artesanal:
+    --primary-color: #517664;
+    --primary-color-dark: #9FD8CB;
+    --primary-color-dark-hover: #2D3319;
+    --contrast-color: #CACFD6;
+    --secondary-color: #D6E5E3
+    
+    */
+    
 }
 
 *{
@@ -44,7 +74,7 @@ a  {
 aside {
     padding: 2rem;
     padding-right: 0;
-    color: var(--background-color);
+    color: white;
     position: sticky;
     top: 0;
     height: 100vh;
@@ -92,7 +122,7 @@ nav {
 .boton-menu {
     background-color: transparent;
     border: 0;
-    color: var(--background-color);
+    color: white;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -101,10 +131,18 @@ nav {
     padding: 1rem;
     font-size: .85rem;
     width: 100%;
+    transition: all 0.2s ease;
+}
+
+.boton-menu:hover {
+    background: var(--contrast-color);
+    color: var(--primary-color);
+    border-radius: 1rem;
+    transform: scale(1rem);
 }
 
 .boton-menu.active {
-    background-color: var(--background-color);
+    background-color: white;
     color: var(--primary-color);
     width: 100%;
     border-top-left-radius: 1rem;
@@ -121,7 +159,7 @@ nav {
     right: 0;
     background-color: transparent;
     border-bottom-right-radius: 1rem;
-    box-shadow: 0 1rem var(--background-color);
+    box-shadow: 0 1rem white;
 }
 
 .boton-menu.active::after {
@@ -133,7 +171,7 @@ nav {
     right: 0;
     background-color: transparent;
     border-top-right-radius: 1rem;
-    box-shadow: 0 -1rem var(--background-color);
+    box-shadow: 0 -1rem white;
 }
 
 .bi-hand-index-thumb-fill,
@@ -151,12 +189,13 @@ nav {
     cursor: pointer;
     transition: all 0.3s ease;
     margin-top: 2rem;
-    background: var(--primary-color-dark);
+    background: var(--primary-color-dark-hover);
     color: #fff;
 }
 
+
 .numerito {
-    background-color: var(--background-color);
+    background-color: white;
     color: var(--primary-color);
     padding: .15rem .25rem;
     border-radius: .25rem;
@@ -164,7 +203,7 @@ nav {
 
 .boton-carrito.active .numerito {
     background-color: var(--primary-color);
-    color: var(--background-color);
+    color: white;
 }
 
 .texto-footer {
@@ -173,7 +212,7 @@ nav {
 }
 
 main {
-    background-color: var(--background-color);
+    background-color: white;
     margin: 1rem;
     margin-left: 0;
     border-radius: 2rem;
@@ -187,7 +226,7 @@ main {
     gap: 12px;
     justify-content: center;
     align-items: center;
-    background: var(--primary-color);
+    background: var(--contrast-color);
     padding: 18px 22px;
     border-radius: 12px;
     margin-bottom: 25px;
@@ -224,21 +263,21 @@ main {
 }
 
 .filtro-busqueda #btnFiltrar {
-    background: var(--primary-color-dark);
+    background: var(--contrast-light-color);
     color: #fff;
 }
 
 .filtro-busqueda #btnFiltrar:hover {
-    background: var(--primary-color-dark-hover);
+    background: var(--contrast-color-hover);
 }
 
 .filtro-busqueda #btnLimpiar {
-    background: var(--primary-color-dark);
+    background: var(--contrast-light-color);
     color: #fff;
 }
 
 .filtro-busqueda #btnLimpiar:hover {
-    background: var(--primary-color-dark-hover);
+    background: var(--contrast-color-hover);
 }
 
 .filtro-busqueda select#ordenarProductos {
@@ -256,6 +295,7 @@ main {
         width: 100%;
     }
 }
+
 
 .titulo-principal {
     color: var(--primary-color-dark);
@@ -278,7 +318,7 @@ main {
 
 .producto-detalles {
     background-color: var(--primary-color);
-    color: var(--background-color);
+    color: white;
     padding: .5rem;
     border-radius: 1rem;
     margin-top: -2rem;
@@ -294,19 +334,19 @@ main {
 
 .producto-agregar {
     border: 0;
-    background-color: var(--background-color);
+    background-color: white;
     color: var(--primary-color);
     padding: .25rem;
     text-transform: uppercase;
     border-radius: 2rem;
     cursor: pointer;
-    border: 2px solid var(--background-color);
+    border: 2px solid white;
     transition: background-color .2s, color .2s;
 }
 
 .producto-agregar:hover {
     background-color: var(--primary-color);
-    color: var(--background-color);
+    color: white;
 }
 
 .producto-imagen {
@@ -408,7 +448,7 @@ main {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--secondary-color);
+    background-color: var(--contrast-color);
     color: var(--primary-color);
     padding: .5rem;
     padding-right: 1.5rem;
@@ -432,6 +472,14 @@ main {
 
 }
 
+.carrito-producto-eliminar:hover{
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 1rem;
+    background-color: crimson;
+    color: var(--text-color-white);
+}
+
 .carrito-acciones {
     display: flex;
     justify-content: space-between;
@@ -439,12 +487,16 @@ main {
 
 .carrito-acciones-vaciar {
     border: 0;
-    background-color: var(--secondary-color);
+    background-color: var(--contrast-light-color);
     padding: 1rem;
     border-radius: 1rem;
-    color: var(--primary-color);
+    color: var(--text-color-white);
     text-transform: uppercase;
     cursor: pointer;
+}
+
+.carrito-acciones-vaciar:hover {
+    background-color: var(--contrast-color-hover);
 }
 
 .carrito-acciones-derecha {
@@ -453,7 +505,7 @@ main {
 
 .carrito-acciones-total {
     display: flex;
-    background-color: var(--secondary-color);
+    background-color: var(--contrast-color);
     padding: 1rem;
     color: var(--primary-color);
     text-transform: uppercase;
@@ -464,13 +516,17 @@ main {
 
 .carrito-acciones-comprar {
     border: 0;
-    background-color: var(--primary-color);
+    background-color: var(--primary-color-dark);
     padding: 1rem;
-    color: var(--background-color);
+    color: white;
     text-transform: uppercase;
     cursor: pointer;
     border-top-right-radius: 1rem;
     border-bottom-right-radius: 1rem;
+}
+
+.carrito-acciones-comprar:hover {
+    background-color: var(--primary-color-dark-hover);
 }
 
 .disabled {
@@ -479,7 +535,6 @@ main {
 
 .boton-agregar {
     background-color: transparent;
-    border: 2px solid #fff;
     color: #fff;
     cursor: pointer;
     display: flex;
@@ -494,9 +549,9 @@ main {
 }
 
 .boton-agregar:hover {
-    background-color: #fff;
+    background-color: var(--contrast-color);
     color: var(--primary-color);
-    transform: scale(1.05);
+    transform: scale(1rem);
 }
 
 .btn-volver {
@@ -534,7 +589,7 @@ main {
     padding: 16px 0;                
     margin: 12px;                 
     text-align: center;           
-    background-color: #fff;       
+    background-color: var(--contrast-color);       
     box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
     transition: transform 0.2s, box-shadow 0.2s; 
     width: 220px;                 
@@ -609,6 +664,7 @@ main {
     padding: 20px;
 }
 
+
 .modal-contenido {
     background-color: var(--secondary-color);
     color: var(--primary-color-dark-hover);
@@ -644,8 +700,8 @@ main {
 }
 
 #modal-imagen {
-    width: 240px;
-    height: auto;
+    width: 400px;
+    height: 400px;
     border-radius: 14px;
     object-fit: cover;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
@@ -659,26 +715,24 @@ main {
 }
 
 .reseñas-container {
-    text-align: left;
-    margin-top: 25px;
-    max-height: 400px; 
     width: 100%;
-    overflow-y: auto;
-    padding: 90px; 
+    padding: 25px;
     background-color: #f9f9f5;
     border-radius: 12px;
-    margin-bottom: 20px;
     border: 1px solid #ddd;
     box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.06);
+    margin-bottom: 10px;
 }
+
 
 .reseña {
     background-color: white;
+    width: 100%;
     border: 1px solid rgba(0, 0, 0, 0.06);
     border-radius: 12px;
-    padding: 14px 18px; 
-    margin-bottom: 14px;
+    padding: 14px 40px 30px 40px; 
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    margin-bottom: 14px;
     font-size: 1rem; 
     line-height: 1.5; 
     transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -719,7 +773,7 @@ main {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 8px;
-    background-color: var(--background-color);
+    background-color: white;
     color: var(--text-color-dark);
     font-size: 0.95rem;
 }
@@ -744,7 +798,7 @@ main {
 #btnEnviarReseña, 
 #modal-agregar-carrito {
     background-color: var(--primary-color);
-    color: var(--background-color);
+    color: white;
     padding: 10px 26px;
     border: none;
     border-radius: 8px;
@@ -782,7 +836,7 @@ main {
 
 .btn-inciar-sesion{
     background-color: var(--primary-color-dark);
-    color: var(--background-color);
+    color: white;
     padding: 10px 26px;
     border: none;
     border-radius: 8px;
@@ -889,10 +943,10 @@ main {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background: var(--primary-color);
-    color: white;
-    border: none;
-    border-radius: 50%;
+    background: var(--contrast-color);
+    color: black;
+    border-color: var(--text-color);
+    border-radius: 100%;
     width: 60px;
     height: 60px;
     font-size: 24px;
@@ -900,4 +954,12 @@ main {
     z-index: 999;
 }
 
+.open-chat-btn:hover{
+    background: var(--contrast-color-hover);
+    color: var(--text-color-white);
+    border-color: var(--primary-color);
+    transform: translateY(2px);
+    
+
+}
 

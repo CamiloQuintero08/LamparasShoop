@@ -96,11 +96,10 @@ function actualizarTotal() {
     contenedorTotal.innerText = `$${totalCalculado}`;
 }
 
-// Comprar (enviar por WhatsApp)
 function comprar() {
     if (productosEnCarrito.length === 0) return;
 
-    const numeroTelefono = "3173392859"; // Cambia por el número real
+    const numeroTelefono = "3006795246"; 
     let textoProductos = productosEnCarrito
         .map(p => `${p.nombre} (x${p.cantidad})`)
         .join("%0A");
@@ -116,5 +115,4 @@ function comprar() {
 
 botonComprar.addEventListener("click", comprar);
 
-// Inicializar carrito al cargar la página
 cargarProductosCarrito();

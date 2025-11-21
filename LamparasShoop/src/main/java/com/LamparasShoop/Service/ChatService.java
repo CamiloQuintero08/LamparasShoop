@@ -19,7 +19,7 @@ public class ChatService {
         StringBuilder respuesta = new StringBuilder();
 
         if (mensaje.contains("hola") || mensaje.contains("buenos")) {
-            return "¡Hola! Bienvenido a Aura Artesanal. Soy tu asistente virtual. ¿Te gustaría ver lámparas, macetas o relojes?";
+            return "¡Hola! Bienvenid@ a Aura Artesanal. Soy tu asistente virtual. ¿Te gustaría ver lámparas, macetas y relojes o recibir informacion acerca del proyecto?";
         } 
         else if (mensaje.contains("gracias") || mensaje.contains("adiós")) {
             return "¡Gracias por visitar Aura Artesanal! Si necesitas algo más, no dudes en volver.";

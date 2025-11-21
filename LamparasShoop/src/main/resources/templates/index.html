@@ -122,7 +122,9 @@
     </div>
 </div>
 
-<button id="openChatBtn" class="open-chat-btn" onclick="toggleChat()">💬</button>
+<button id="openChatBtn" class="open-chat-btn" onclick="toggleChat()">
+    <i class="bi bi-robot"></i>
+</button>
 
 
 <script>
@@ -152,7 +154,7 @@ async function sendChatMessage() {
     const text = input.value.trim();
     if (!text) return;
 
-    // Mensaje del usuario
+    
     const userDiv = document.createElement('div');
     userDiv.classList.add('message', 'user');
     userDiv.innerText = text;
