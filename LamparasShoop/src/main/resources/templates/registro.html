@@ -5,90 +5,132 @@
     <title>Registro</title>
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
+        @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap");
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+        @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css");
 
-        :root {
-            --primary-color: #556B2F;
-            --primary-color-dark: #3E4A2F;
-            --primary-color-dark-hover: #2E381F;
-            --contrast-color: #E1D8C5;
-            --contrast-light-color: #92817A;
-            --contrast-color-hover: #362417;
-            --secondary-color: #F5F1E8;
-            --secondary-color-hover: #BCD8C1;
-            --text-color: #4A3B26;
-            --text-color-dark: #3B2E1E;
-            --text-color-white: #FFFCF6;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Rubik", sans-serif;
         }
 
-        * { margin:0; padding:0; box-sizing:border-box; font-family:'Rubik', sans-serif; }
-
-        /* Fondo completo difuminado */
-        body.auth-body {
+        /* MISMO FONDO CON ANIMACIÓN */
+        body {
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color-hover));
+            background: linear-gradient(#556B2F, #E1D8C5, #362417, #556B2F);
+            background-size: 200% 200%;
+            animation: cascada 10s linear infinite;
         }
 
+        @keyframes cascada {
+            0% { background-position: 0% 0%; }
+            25% { background-position: 50% 25%; }
+            50% { background-position: 100% 50%; }
+            75% { background-position: 50% 75%; }
+            100% { background-position: 0% 100%; }
+        }
+
+        @property --a {
+            syntax: "<angle>";
+            inherits: false;
+            initial-value: 0deg;
+        }
+
+        /* MISMA CAJA PRINCIPAL ANIMADA */
+        .box {
+            position: relative;
+            width: 900px;
+            height: 700px;
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: 0.5s;
+            background: #556B2F;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+        }
+
+        .box::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 20px;
+            background: repeating-conic-gradient(
+                    from var(--a),
+                    #94c3a3 0%,
+                    #94c3a3 6%,
+                    transparent 6%,
+                    transparent 44%,
+                    #94c3a3 50%
+            );
+            filter: blur(10px) saturate(1.05);
+            animation: rotating 6s linear infinite;
+            z-index: 1;
+            pointer-events: none;
+            mask-image: radial-gradient(circle, transparent 70%, black 100%);
+            -webkit-mask-image: radial-gradient(circle, transparent 70%, black 100%);
+        }
+
+        .box::after {
+            content: "";
+            position: absolute;
+            inset: 6px;
+            border-radius: 14px;
+            background: rgba(0,0,0,0.45);
+            border: 5px solid rgba(255,255,255,0.06);
+            z-index: 2;
+        }
+
+        @keyframes rotating {
+            0% { --a: 0deg; }
+            100% { --a: 360deg; }
+        }
+
+        /* CONTENEDOR INTERNO */
         .auth-container {
-            background: var(--secondary-color);
-            display: flex;
-            flex-direction: row;
-            gap: 3rem;
-            padding: 3rem;
-            border-radius: 1.5rem;
-            width: 90%;
-            max-width: 1000px;
-            box-shadow: 0 12px 35px rgba(0,0,0,0.18);
-            animation: fadeIn 0.7s ease;
+            position: absolute;
+            inset: 22px;
+            z-index: 3;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            padding: 2rem;
+            gap: 2rem;
+            color: #fff;
+            align-items: center;
         }
 
-        @keyframes fadeIn {
-            from { opacity:0; transform: translateY(-15px); }
-            to { opacity:1; transform: translateY(0); }
-        }
-
-        /* COLUMNA IZQUIERDA */
-        .auth-info {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
+        /* TEXTO */
         .auth-info h2 {
             font-size: 2rem;
             font-weight: 700;
-            color: var(--primary-color-dark-hover);
+            color: #E1D8C5;
+            text-shadow: 0 0 6px rgba(255, 187, 119, 0.7);
+            margin-bottom: 1rem;
         }
 
         .auth-info p {
             font-size: 1rem;
-            color: var(--text-color-dark);
-            line-height: 1.6;
+            line-height: 1.5;
+            color: rgba(255,255,255,0.92);
         }
 
+        /* IMAGEN */
         .auth-image {
             width: 100%;
-            max-width: 330px;
-            border-radius: 1rem;
-            padding: 0.4rem;
-            border: 4px solid var(--contrast-color);
-            background: var(--secondary-color);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.25);
-            transition: 0.3s ease;
-        }
-
-        .auth-image:hover {
-            transform: scale(1.03);
-            box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+            max-width: 200px;
+            border-radius: 12px;
+            border: 3px solid rgba(231,183,136,0.25);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+            margin-top: 1rem;
         }
 
         /* FORMULARIO */
         form {
-            flex: 1;
             display: flex;
             flex-direction: column;
             gap: 1rem;
@@ -96,78 +138,71 @@
 
         input {
             padding: 0.9rem;
-            border: 1px solid #ccc;
-            border-radius: 0.8rem;
+            border-radius: 30px;
             font-size: 1rem;
-            background: #fff;
-            color: var(--text-color-dark);
-            transition: border-color 0.2s;
+            border: 2px solid rgba(255,255,255,0.18);
+            background: rgba(255, 255, 255, 0.06);
+            color: #fff;
+            outline: none;
+            backdrop-filter: blur(2px);
         }
 
+        input::placeholder { color: rgba(255,255,255,0.7); }
+
         input:focus {
-            border-color: var(--primary-color-dark-hover);
+            border-color: #caa178;
+            box-shadow: 0 0 8px rgba(202,161,120,0.12);
         }
 
         .auth-btn {
-            background: var(--primary-color);
-            color: var(--text-color-white);
+            background: linear-gradient(180deg, #728a47, #2E381F);
+            color: #fff;
             padding: 0.9rem;
-            border-radius: 0.8rem;
+            border-radius: 30px;
             border: none;
             font-weight: 600;
             cursor: pointer;
-            transition: 0.3s;
+            transition: transform .18s ease, box-shadow .18s ease;
         }
 
         .auth-btn:hover {
-            background: var(--primary-color-dark-hover);
-            transform: scale(1.03);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgb(255, 245, 62);
         }
 
         .auth-text {
-            margin-top: 1rem;
-            font-size: 0.9rem;
             text-align: center;
-            color: var(--text-color-dark);
+            color: rgba(255,255,255,0.9);
+            font-size: 0.9rem;
+            margin-top: .5rem;
         }
 
         .auth-text a {
-            color: var(--primary-color-dark-hover);
-            font-weight: 600;
+            color: #e7b788;
+            font-weight: bold;
             text-decoration: none;
         }
 
-        .auth-text a:hover {
-            text-decoration: underline;
-        }
+        .auth-text a:hover { text-decoration: underline; }
 
         /* RESPONSIVE */
-        @media (max-width: 900px) {
-            .auth-container {
-                flex-direction: column;
-                text-align: center;
-                gap: 2rem;
-            }
-
-            .auth-info {
-                align-items: center;
-            }
-
-            .auth-image { max-width: 260px; }
+        @media(max-width: 900px){
+            .box { width: 92%; height: auto; min-height: 520px; }
+            .auth-container { grid-template-columns: 1fr; text-align: center; inset: 18px; }
+            .auth-image { margin: auto; max-width: 180px; }
         }
-
     </style>
 </head>
 
-<body class="auth-body">
+<body>
 
+<div class="box">
     <div class="auth-container">
 
         <div class="auth-info">
-            <h2>Registro de Usuario</h2>
-            <p>Crea una cuenta para acceder a la experiencia completa de Aura Artesanal.
-            Disfruta de productos hechos a mano con amor y dedicación.</p>
-            <img src="/img/ImagenRegistro.png" alt="Registro" class="auth-image">
+            <h2><i class="fa-solid fa-user-plus"></i> Crea tu cuenta</h2>
+            <p>Únete a Aura Artesanal y disfruta de productos únicos hechos con amor.</p>
+            <img src="/img/ImagenRegistro.png" class="auth-image" alt="Imagen Registro">
         </div>
 
         <form action="/registro" method="post">
@@ -185,6 +220,7 @@
         </form>
 
     </div>
+</div>
 
 </body>
 </html>
